@@ -1,0 +1,2850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信頼構築型Instagram運用支援サービス - バズらせるのではなく、信頼される</title>
+    <style>
+        /* CSS変数定義 */
+        :root {
+            /* プライマリカラー */
+            --primary: #4ECDC4;
+            --primary-dark: #2B7A78;
+            --primary-light: #E8F4F8;
+            
+            /* ベースカラー */
+            --white: #FFFFFF;
+            --background: #F8FFFE;
+            --neutral-50: #F8F9FA;
+            --neutral-100: #E9ECEF;
+            
+            /* テキストカラー */
+            --text-primary: #2C3E50;
+            --text-secondary: #7F8C8D;
+            --text-caption: #95A5A6;
+            
+            /* 機能カラー */
+            --success: #27AE60;
+            --warning: #F39C12;
+            --danger: #E74C3C;
+            --info: #3498DB;
+            
+            /* フォントサイズ */
+            --font-h1: 2.8rem;
+            --font-h2: 2.2rem;
+            --font-h3: 1.6rem;
+            --font-h4: 1.2rem;
+            --font-body-large: 1.1rem;
+            --font-body: 1rem;
+            --font-body-small: 0.9rem;
+            --font-caption: 0.8rem;
+            --font-citation: 0.75rem;
+            
+            /* スペーシング */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-xxl: 64px;
+            --space-xxxl: 80px;
+        }
+        
+        /* 基本リセット */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            background-color: var(--background);
+        }
+        
+        /* レイアウト */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        .section {
+            padding: var(--space-xxxl) 0;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xxl);
+        }
+        
+        .section-title {
+            font-size: var(--font-h2);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            line-height: 1.4;
+        }
+        
+        .section-subtitle {
+            font-size: var(--font-body-large);
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* 目次 */
+        .table-of-contents {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-xxl);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: var(--space-xxl) 0;
+        }
+        
+        .toc-title {
+            font-size: var(--font-h3);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .toc-item {
+            padding: var(--space-md);
+            border-radius: 8px;
+            background: var(--neutral-50);
+            transition: all 0.3s ease;
+        }
+        
+        .toc-item:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .toc-item a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            display: block;
+        }
+        
+        .toc-item a:hover {
+            color: var(--primary-dark);
+        }
+        
+        /* セクション番号 */
+        .section-number {
+            background: var(--primary);
+            color: var(--white);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: var(--font-h4);
+            margin: 0 auto var(--space-lg);
+        }
+        
+        /* ヒーロセクション */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%);
+            padding: var(--space-xxxl) 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: var(--font-h1);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            line-height: 1.3;
+        }
+        
+        .hero-subtitle {
+            font-size: var(--font-h3);
+            color: var(--primary-dark);
+            margin-bottom: var(--space-xl);
+            line-height: 1.5;
+        }
+        
+        .hero-description {
+            font-size: var(--font-body-large);
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.8;
+        }
+        
+        /* カード */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .card-title {
+            font-size: var(--font-h4);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+            line-height: 1.5;
+        }
+        
+        .card p {
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* グリッドレイアウト */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+        }
+        
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+        }
+        
+        /* チャートコンテナ */
+        .chart-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin: var(--space-xl) 0;
+            height: 400px;
+            position: relative;
+        }
+        
+        .chart-title {
+            font-size: var(--font-h4);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        
+        /* 棒グラフ */
+        .bar-chart {
+            display: flex;
+            align-items: end;
+            height: 280px;
+            gap: var(--space-lg);
+            justify-content: center;
+            margin-top: var(--space-lg);
+        }
+        
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+        
+        .bar {
+            width: 80px;
+            background: linear-gradient(to top, var(--primary), var(--primary-light));
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: var(--space-sm);
+            color: var(--white);
+            font-weight: 700;
+            font-size: var(--font-body-large);
+            margin-bottom: var(--space-md);
+        }
+        
+        .bar-label {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        
+        /* 円グラフ */
+        .pie-chart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 280px;
+            gap: var(--space-xxl);
+        }
+        
+        .pie-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .pie-segment {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transform-origin: center;
+        }
+        
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .legend-text {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .legend-value {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        /* Web集客全体図 */
+        .web-ecosystem-diagram {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-xxl);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin: var(--space-xl) 0;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ecosystem-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary);
+            color: var(--white);
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: var(--font-body-large);
+            text-align: center;
+            z-index: 3;
+        }
+        
+        .ecosystem-node {
+            position: absolute;
+            background: var(--white);
+            border: 3px solid var(--primary-light);
+            border-radius: 12px;
+            padding: var(--space-md);
+            min-width: 120px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            z-index: 2;
+        }
+        
+        .instagram-node {
+            background: linear-gradient(135deg, #E4405F, #FF6B9D);
+            color: var(--white);
+            border-color: #E4405F;
+        }
+        
+        .ecosystem-connection {
+            position: absolute;
+            height: 2px;
+            background: var(--primary-light);
+            z-index: 1;
+        }
+        
+        /* 比較表 */
+        .comparison-table {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin: var(--space-xl) 0;
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .comparison-header {
+            background: var(--neutral-50);
+            padding: var(--space-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            font-size: var(--font-h4);
+        }
+        
+        .comparison-cell {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--neutral-100);
+            line-height: 1.8;
+        }
+        
+        .comparison-traditional {
+            background: #FFF5F5;
+            color: var(--danger);
+        }
+        
+        .comparison-our-method {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        /* 統計データ表示 */
+        .stat-highlight {
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0 var(--space-xs);
+        }
+        
+        /* ソース引用 */
+        .source-citation {
+            background: var(--neutral-50);
+            border-left: 4px solid var(--info);
+            padding: var(--space-lg);
+            margin-top: var(--space-xl);
+            font-size: var(--font-body-small);
+            color: var(--text-caption);
+            border-radius: 8px;
+            line-height: 1.7;
+        }
+        
+        .source-citation strong {
+            color: var(--text-primary);
+        }
+        
+        /* フロー図 */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+            margin: var(--space-xxl) 0;
+        }
+        
+        .process-step {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            text-align: center;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto var(--space-md);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: var(--space-xxxl) 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: var(--font-h2);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            line-height: 1.4;
+        }
+        
+        .cta-button {
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--space-lg) var(--space-xxl);
+            border: none;
+            border-radius: 12px;
+            font-size: var(--font-body-large);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: var(--space-lg);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #45B7B8;
+            transform: translateY(-2px);
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            :root {
+                --font-h1: 2.2rem;
+                --font-h2: 1.8rem;
+                --font-h3: 1.4rem;
+            }
+            
+            .container {
+                padding: 0 var(--space-md);
+            }
+            
+            .grid-2col,
+            .grid-3col {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-flow {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .bar-chart {
+                flex-direction: column;
+                height: auto;
+                gap: var(--space-md);
+            }
+            
+            .bar-item {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .bar {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 0;
+                margin-left: var(--space-md);
+            }
+            
+            .pie-chart {
+                flex-direction: column;
+                height: auto;
+                gap: var(--space-lg);
+            }
+            
+            .web-ecosystem-diagram {
+                height: 400px;
+            }
+            
+            .ecosystem-center {
+                width: 100px;
+                height: 100px;
+                font-size: var(--font-body);
+            }
+            
+            .ecosystem-node {
+                min-width: 80px;
+                padding: var(--space-sm);
+                font-size: var(--font-body-small);
+            }
+        }
+        
+        /* 問題点ハイライト */
+        .problem-highlight {
+            background: #FFF5F5;
+            border-left: 4px solid var(--danger);
+            border-radius: 8px;
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .solution-highlight {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        /* 業種別カード */
+        .industry-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: var(--space-xl);
+            border-top: 4px solid var(--primary);
+        }
+        
+        .industry-title {
+            font-size: var(--font-h4);
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .industry-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .industry-card li {
+            margin-bottom: var(--space-md);
+            line-height: 1.7;
+        }
+        
+        .industry-card li:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 実績セクション */
+        .achievement-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .achievement-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+        }
+        
+        .achievement-label {
+            font-size: var(--font-body);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* 料金プランカード */
+        .pricing-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+            margin: var(--space-xxl) 0;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+        
+        .standard-plan {
+            border-color: var(--primary);
+        }
+        
+        .premium-plan {
+            border-color: var(--success);
+            background: linear-gradient(135deg, var(--white) 0%, #f0fff4 100%);
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 2px solid var(--neutral-100);
+        }
+        
+        .plan-name {
+            font-size: var(--font-h3);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .plan-price {
+            margin-bottom: var(--space-md);
+        }
+        
+        .price-original {
+            font-size: var(--font-body);
+            color: var(--text-caption);
+            text-decoration: line-through;
+            margin-right: var(--space-sm);
+        }
+        
+        .price-current {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        .price-period {
+            font-size: var(--font-body);
+            color: var(--text-secondary);
+        }
+        
+        .plan-description {
+            color: var(--text-secondary);
+            font-size: var(--font-body);
+        }
+        
+        .service-category {
+            color: var(--primary-dark);
+            font-size: var(--font-h4);
+            font-weight: 600;
+            margin: var(--space-lg) 0 var(--space-md) 0;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--primary-light);
+        }
+        
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .service-list li {
+            padding: var(--space-xs) 0;
+            color: var(--text-secondary);
+            font-size: var(--font-body-small);
+            line-height: 1.6;
+        }
+        
+        .premium-features {
+            background: rgba(39, 174, 96, 0.05);
+            border-radius: 8px;
+            padding: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        
+        /* タイムライン */
+        .timeline-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin: var(--space-xl) 0;
+        }
+        
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: var(--space-lg);
+            padding: var(--space-lg) 0;
+            border-bottom: 1px solid var(--neutral-100);
+            position: relative;
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 0;
+            bottom: -1px;
+            width: 2px;
+            background: var(--primary-light);
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .timeline-month {
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--space-sm);
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: var(--font-body-small);
+            height: fit-content;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-content h4 {
+            color: var(--text-primary);
+            font-size: var(--font-h4);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: var(--font-body-small);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+        
+        .timeline-posts {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: var(--space-sm);
+            border-radius: 6px;
+            font-size: var(--font-body-small);
+            font-weight: 600;
+            display: inline-block;
+        }
+        .floating-toc {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+        
+        .floating-toc-toggle {
+            background: var(--primary);
+            color: var(--white);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-toc-toggle:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        .floating-toc-menu {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            min-width: 280px;
+            max-height: 400px;
+            overflow-y: auto;
+            transform: translateY(20px) scale(0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-toc-menu.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .floating-toc-header {
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--neutral-100);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: var(--font-body-small);
+        }
+        
+        .floating-toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .floating-toc-item {
+            border-bottom: 1px solid var(--neutral-100);
+        }
+        
+        .floating-toc-item:last-child {
+            border-bottom: none;
+        }
+        
+        .floating-toc-link {
+            display: block;
+            padding: var(--space-sm) var(--space-md);
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: var(--font-body-small);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-toc-link:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        /* スムーススクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">「バズらせるのではなく、信頼される」<br>Instagram運用支援サービス</h1>
+            <p class="hero-subtitle">「映えない業界」に特化した信頼構築アプローチ</p>
+            <div class="hero-description">
+                <p>インフルエンサー的なバズらせを狙うSNS運用ではありません。専門性を活かした発信でユーザーの判断材料を後押しし、AISEO時代に対応する必須対策としてのInstagram運用を実現します。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 目次 -->
+    <section class="section">
+        <div class="container">
+            <div class="table-of-contents">
+                <h2 class="toc-title">目次</h2>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#section-1">1. 昨今のInstagram運用の問題点</a></li>
+                    <li class="toc-item"><a href="#section-2">2. 「映えない業界」の課題と機会</a></li>
+                    <li class="toc-item"><a href="#section-3">3. InstagramはWebサイテーションの重要な一翼</a></li>
+                    <li class="toc-item"><a href="#section-4">4. なぜ今「信頼構築」が最重要なのか</a></li>
+                    <li class="toc-item"><a href="#section-5">5. 専門性を最大化するアカウント設計</a></li>
+                    <li class="toc-item"><a href="#section-6">6. 信頼構築特化アプローチによる投稿戦略</a></li>
+                    <li class="toc-item"><a href="#section-7">7. 業種別信頼構築戦略の実践例</a></li>
+                    <li class="toc-item"><a href="#section-8">8. 撮影技術に依存しない効率的制作手法</a></li>
+                    <li class="toc-item"><a href="#section-9">9. 信頼と実績に基づく強固な運営体制</a></li>
+                    <li class="toc-item"><a href="#section-10">10. 総合マーケティング支援への展望</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. 昨今のInstagram運用の問題点 -->
+    <section class="section" id="section-1">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">昨今のInstagram運用の問題点</h2>
+                <p class="section-subtitle">「映える投稿でバズらせる」手法の限界が明らかに</p>
+            </div>
+            
+            <div class="grid-3col">
+                <div class="problem-highlight">
+                    <h3 class="card-title">高いコスト負担</h3>
+                    <p>高度な撮影技術が必要なため、外注コスト増加や品質不安定化が発生。継続的な運用が困難になりがちです。</p>
+                </div>
+                
+                <div class="problem-highlight">
+                    <h3 class="card-title">ターゲットのズレ</h3>
+                    <p>インプレッション数を狙いすぎて、本来のターゲットとは異なる層が一時的に注目する状態に。</p>
+                </div>
+                
+                <div class="problem-highlight">
+                    <h3 class="card-title">継続性の欠如</h3>
+                    <p>一時的な注目で新規獲得はできても、継続的な集客効果やリピーター獲得の見込みが薄い。</p>
+                </div>
+            </div>
+
+            <!-- 実証されたデータに基づく課題分析 -->
+            <div class="solution-highlight" style="margin-top: var(--space-xl);">
+                <h4 style="color: var(--primary-dark);">従来手法の実証された課題</h4>
+                <p>上記の問題点は、多くの事業者が実際に直面している課題です。具体的な解決策として、専門性を活かした信頼構築型アプローチが効果的であることが、以下の統計データで実証されています。</p>
+            </div>
+            
+            <div class="source-citation">
+                <strong>参考データ:</strong> <span class="stat-highlight">84%</span>のZ世代は実際の顧客や体験者が登場する広告をブランドへの信頼獲得の材料と認識し、消費者の<span class="stat-highlight">90%</span>がブランド選択で「本物感」を重視している。<br>
+                <strong>出典:</strong> <a href="https://inbeat.agency/blog/ugc-statistics" target="_blank" rel="noopener">UGC Statistics - InBeat Agency</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 「映えない業界」の課題と機会 -->
+    <section class="section" id="section-2" style="background: var(--neutral-50);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">「映えない業界」の真の課題と大きな市場機会</h2>
+                <p class="section-subtitle">専門性こそが最大の武器になる時代</p>
+            </div>
+            
+            <div class="comparison-table">
+                <div class="comparison-row">
+                    <div class="comparison-header comparison-traditional">一般的なInstagram運用の罠</div>
+                    <div class="comparison-header comparison-our-method">専門性を活かした真の価値創造</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-traditional">
+                        <strong>指標に捉われがち</strong><br>
+                        インプレッション数やフォロワー数といった目の前の指標を追いかけてしまう
+                    </div>
+                    <div class="comparison-cell comparison-our-method">
+                        <strong>本質的価値の提供</strong><br>
+                        圧倒的な専門性を活かし、ユーザーが本当に求める情報を発信
+                    </div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-traditional">
+                        <strong>画一的なアプローチ</strong><br>
+                        Instagram運用の一般論に巻き込まれ、業界特性が活かせない
+                    </div>
+                    <div class="comparison-cell comparison-our-method">
+                        <strong>業界特化型戦略</strong><br>
+                        各業界の専門的な知見を活用した差別化されたコンテンツ
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実証された統計データ -->
+            <div class="solution-highlight" style="margin-top: var(--space-xl);">
+                <h4 style="color: var(--primary-dark);">実証されたユーザー行動の変化</h4>
+                <p>消費者の情報収集行動において、以下の統計データが示すように、専門性の高い情報への需要が高まっています：</p>
+                <ul style="margin-top: var(--space-md); padding-left: var(--space-lg);">
+                    <li><span class="stat-highlight">92%</span>の消費者がUGCを従来広告より信頼</li>
+                    <li><span class="stat-highlight">84%</span>のZ世代が実体験者の情報を重視</li>
+                    <li><span class="stat-highlight">90%</span>の消費者がブランド選択で「本物感」を重視</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: var(--space-xxl);">
+                <h3 style="color: var(--text-primary); margin-bottom: var(--space-lg); text-align: center;">業界別の具体的な不安解消アプローチ</h3>
+                
+                <div class="grid-2col">
+                    <div class="industry-card">
+                        <h4 class="industry-title">歯科医院の課題解決</h4>
+                        <ul>
+                            <li>🔍 「なぜこんなに削るの？」の疑問に明確回答</li>
+                            <li>📋 治療プロセスの完全透明化</li>
+                            <li>👨‍⚕️ 専門医としての信頼性構築</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="industry-card">
+                        <h4 class="industry-title">葬儀業界の課題解決</h4>
+                        <ul>
+                            <li>🤝 「近寄りがたい」イメージの払拭</li>
+                            <li>💰 料金体系の完全透明化</li>
+                            <li>👥 働きやすい職場としてのアピール</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="solution-highlight" style="margin-top: var(--space-xxl);">
+                <h4 style="color: var(--primary-dark); margin-bottom: var(--space-md);">市場機会の本質</h4>
+                <p>嘘だらけの情報が散らばるこの時代、ユーザーは本物の専門性を求めています。ここで作られるコンテンツはInstagramを超えてWeb集客全体に波及し、真の競争優位性を構築します。</p>
+            </div>
+            
+            <div class="source-citation">
+                <strong>統計的根拠:</strong> <span class="stat-highlight">92%</span>の消費者がUGC（ユーザー生成コンテンツ）を従来広告より信頼し、<span class="stat-highlight">79%</span>の人がUGCが購買判断に影響すると回答。<br>
+                <strong>出典:</strong> <a href="https://wisernotify.com/blog/ugc-stats/" target="_blank" rel="noopener">UGC Statistics - WiserNotify</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. InstagramはWebサイテーションの重要な一翼 -->
+    <section class="section" id="section-3">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">InstagramはWebサイテーションの重要な一翼</h2>
+                <p class="section-subtitle">AISEO時代に必須となるサイテーション戦略</p>
+            </div>
+
+            <!-- Web集客全体像の図 -->
+            <div class="web-ecosystem-diagram">
+                <h3 class="chart-title">Web集客エコシステム全体像</h3>
+                
+                <!-- 中央のコア -->
+                <div class="ecosystem-center">
+                    ブランド<br>信頼性
+                </div>
+                
+                <!-- Instagram（強調） -->
+                <div class="ecosystem-node instagram-node" style="top: 15%; left: 20%;">
+                    Instagram<br>専門発信
+                </div>
+                
+                <!-- その他のWeb要素 -->
+                <div class="ecosystem-node" style="top: 15%; right: 20%;">
+                    公式サイト<br>SEO
+                </div>
+                
+                <div class="ecosystem-node" style="top: 40%; left: 5%;">
+                    Google<br>マイビジネス
+                </div>
+                
+                <div class="ecosystem-node" style="top: 40%; right: 5%;">
+                    業界メディア<br>掲載
+                </div>
+                
+                <div class="ecosystem-node" style="bottom: 15%; left: 15%;">
+                    YouTube<br>解説動画
+                </div>
+                
+                <div class="ecosystem-node" style="bottom: 15%; right: 15%;">
+                    専門ブログ<br>記事
+                </div>
+                
+                <div class="ecosystem-node" style="bottom: 40%; left: 45%;">
+                    口コミサイト<br>評価
+                </div>
+                
+                <!-- 接続線 -->
+                <div class="ecosystem-connection" style="top: 30%; left: 35%; width: 30%; transform: rotate(30deg);"></div>
+                <div class="ecosystem-connection" style="top: 30%; left: 35%; width: 30%; transform: rotate(-30deg);"></div>
+                <div class="ecosystem-connection" style="top: 50%; left: 25%; width: 50%;"></div>
+                <div class="ecosystem-connection" style="top: 70%; left: 35%; width: 30%; transform: rotate(30deg);"></div>
+                <div class="ecosystem-connection" style="top: 70%; left: 35%; width: 30%; transform: rotate(-30deg);"></div>
+            </div>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Instagram投稿</h4>
+                    <p class="step-description">専門性の高いコンテンツ発信</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">Webサイテーション</h4>
+                    <p class="step-description">多角的な情報網羅</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">AI引用・信頼構築</h4>
+                    <p class="step-description">権威性の確立</p>
+                </div>
+            </div>
+            
+            <div class="grid-2col" style="margin-top: var(--space-xxl);">
+                <div class="card">
+                    <h4 class="card-title">従来の課題</h4>
+                    <ul>
+                        <li>Instagram単体での視野狭窄</li>
+                        <li>他のWeb施策との連携不足</li>
+                        <li>一時的な効果に終始</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4 class="card-title">統合アプローチの効果</h4>
+                    <ul>
+                        <li>Web全体での権威性構築</li>
+                        <li>AI引用率の向上</li>
+                        <li>持続的な信頼関係の形成</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="source-citation">
+                <strong>AISEO最新データ:</strong> AI引用頻度は、Webトラフィックより「権威性」と「多様な評価元からの言及」が強く相関。訪問数8,500の小規模サイトが2万回以上AIに引用されたケースも確認されている。<br>
+                <strong>出典:</strong> <a href="https://www.brandlight.ai/blog/where-ai-citations-actually-come-from---and-why-traffic-isnt-the-answer" target="_blank" rel="noopener">BrandLight AI Blog</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. なぜ今「信頼構築」が最重要なのか -->
+    <section class="section" id="section-4" style="background: var(--primary-light);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">なぜ今「信頼構築」が最重要なのか</h2>
+                <p class="section-subtitle">データが証明する信頼の圧倒的な影響力</p>
+            </div>
+            
+            <div class="grid-3col">
+                <div class="achievement-card">
+                    <div class="achievement-number">92%</div>
+                    <div class="achievement-label">の消費者がUGCを従来広告より信頼</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-number">79%</div>
+                    <div class="achievement-label">がUGCを購買決定の判断材料に活用</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-number">29%</div>
+                    <div class="achievement-label">UGC活用でWebコンバージョン向上</div>
+                </div>
+            </div>
+
+            <!-- 実証された信頼度データ -->
+            <div class="solution-highlight" style="margin-top: var(--space-xl);">
+                <h4 style="color: var(--primary-dark);">情報源別信頼度の実証データ</h4>
+                <p>以下は実際の調査データに基づく信頼度の比較です：</p>
+                <ul style="margin-top: var(--space-md); padding-left: var(--space-lg);">
+                    <li><strong>UGC（ユーザー生成コンテンツ）:</strong> <span class="stat-highlight">92%</span>が従来広告より信頼（出典: Backlinko UGC Statistics）</li>
+                    <li><strong>専門家による解説:</strong> <span class="stat-highlight">84%</span>が実体験者の情報を信頼（出典: InBeat Agency）</li>
+                    <li><strong>企業広告:</strong> 消費者の<span class="stat-highlight">81%</span>が購買前に信頼が必要と回答（出典: AMRA & ELMA）</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: var(--space-xxl);">
+                <h3 style="color: var(--text-primary); margin-bottom: var(--space-lg); text-align: center;">信頼構築がもたらす具体的成果</h3>
+                
+                <div class="grid-2col">
+                    <div class="solution-highlight">
+                        <h4 style="color: var(--primary-dark);">消費者行動の変化</h4>
+                        <p><span class="stat-highlight">81%</span>の消費者が購買前にブランドへの信頼が必要と回答。<span class="stat-highlight">88%</span>の購買決定で「信頼」が影響している。</p>
+                    </div>
+                    
+                    <div class="solution-highlight">
+                        <h4 style="color: var(--primary-dark);">AISEO時代への対応</h4>
+                        <p>AI概要が検索結果の<span class="stat-highlight">47%</span>に表示される中、信頼性の高い情報源からの引用が優先される傾向が顕著に。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="source-citation">
+                <strong>統合データ出典:</strong><br>
+                • UGC信頼度: <a href="https://backlinko.com/ugc-statistics" target="_blank" rel="noopener">Backlinko UGC Statistics</a><br>
+                • 消費者信頼度: <a href="https://www.amraandelma.com/consumer-trust-in-advertising-statistics/" target="_blank" rel="noopener">AMRA & ELMA Consumer Trust Statistics</a><br>
+                • AISEO動向: <a href="https://www.seo.com/ai/ai-seo-statistics" target="_blank" rel="noopener">SEO.com AI Statistics</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 専門性を最大化するアカウント設計 -->
+    <section class="section" id="section-5">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">専門性を最大化するアカウント設計</h2>
+                <p class="section-subtitle">信頼構築のための戦略的設計プロセス</p>
+            </div>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">サービスリサーチ</h4>
+                    <p class="step-description">貴社の歴史・強みを徹底分析</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">競合リサーチ</h4>
+                    <p class="step-description">ベンチマーク設定と差別化戦略</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">コンセプト設定</h4>
+                    <p class="step-description">専門性重視の配信コンセプト</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: var(--space-xxl);">
+                <h3 style="color: var(--text-primary); margin-bottom: var(--space-lg);">投稿ルール設計の具体例</h3>
+                
+                <div class="comparison-table">
+                    <div class="comparison-row">
+                        <div class="comparison-header comparison-traditional">一般的な投稿例（NG）</div>
+                        <div class="comparison-header comparison-our-method">専門性重視の投稿例（推奨）</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell comparison-traditional">
+                            <strong>「この歯磨き方法で人生変わった」</strong><br>
+                            ❌ 誇張表現で信頼性欠如<br>
+                            ❌ 競合に埋もれる内容<br>
+                            ❌ 専門性が活かされない
+                        </div>
+                        <div class="comparison-cell comparison-our-method">
+                            <strong>「創業30年、ベテラン歯科医が教える、笑顔が褒められる歯磨き方法」</strong><br>
+                            ✅ 創業歴で信頼性確保<br>
+                            ✅ 他者評価の言及<br>
+                            ✅ 専門性が明確に表現
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: var(--space-xxl);">
+                <h3 style="color: var(--text-primary); margin-bottom: var(--space-lg);">プロフィール・ハイライト戦略</h3>
+                
+                <div class="grid-2col">
+                    <div class="card">
+                        <h4 class="card-title">プロフィール最適化</h4>
+                        <ul>
+                            <li>専門性が一目で分かる説明文</li>
+                            <li>信頼性を示す実績・資格</li>
+                            <li>明確な導線設計</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="card-title">ハイライト設計原則</h4>
+                        <ul>
+                            <li>基本1つ、最大3つまでに絞る</li>
+                            <li>サービス歴史・人物・強みの明示</li>
+                            <li>ユーザーの迷いを排除した構成</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="solution-highlight" style="margin-top: var(--space-xxl);">
+                <h4 style="color: var(--primary-dark);">投稿ネタ作成プロセス</h4>
+                <p>4投稿×半年分（30件）の投稿ネタを事前作成。インプレッションやコメント状況を分析し、必要に応じて動画制作でリール投稿も追加対応いたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 信頼構築特化アプローチによる投稿戦略 -->
+    <section class="section" id="section-6" style="background: var(--neutral-50);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2 class="section-title">信頼構築特化アプローチによる投稿戦略</h2>
+                <p class="section-subtitle">教育×信頼で構築する持続的な顧客関係</p>
+            </div>
+            
+            <div class="grid-2col">
+                <div class="achievement-card" style="background: linear-gradient(135deg, var(--success) 0%, #229954 100%);">
+                    <div class="achievement-number">50%</div>
+                    <div class="achievement-label">教育・啓発コンテンツ</div>
+                </div>
+                
+                <div class="achievement-card" style="background: linear-gradient(135deg, var(--info) 0%, #2874A6 100%);">
+                    <div class="achievement-number">50%</div>
+                    <div class="achievement-label">FAQ・信頼構築コンテンツ</div>
+                </div>
+            </div>
+
+            <!-- 実証された投稿効果データ -->
+            <div class="solution-highlight" style="margin-top: var(--space-xl);">
+                <h4 style="color: var(--primary-dark);">投稿種類別の実証された効果</h4>
+                <p>以下のデータは実際の調査結果に基づいています：</p>
+                <ul style="margin-top: var(--space-md); padding-left: var(--space-lg);">
+                    <li><strong>UGC含有投稿:</strong> <span class="stat-highlight">29%</span>のコンバージョン向上（出典: WiserNotify）</li>
+                    <li><strong>専門解説コンテンツ:</strong> <span class="stat-highlight">79%</span>のユーザーが購買判断に活用（出典: Backlinko）</li>
+                    <li><strong>教育・啓発投稿:</strong> <span class="stat-highlight">92%</span>が従来広告より信頼される（出典: GoViral Global）</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: var(--space-xxl);">
+                <h3 style="color: var(--text-primary); margin-bottom: var(--space-lg);">コンテンツ制作の特徴</h3>
+                
+                <div class="grid-3col">
+                    <div class="card">
+                        <h4 class="card-title">撮影技術に依存しない</h4>
+                        <p>実店舗の素材を活用し、過度な編集を避けた自然なコンテンツ制作</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="card-title">法的制約完全対応</h4>
+                        <p>医療法・薬機法等への完全対応。各投稿に専門性を示す情報を明記</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="card-title">CV導線の最適化</h4>
+                        <p>「この記事を書いた人」情報でプロフィール・HP誘導を自然に実現</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="solution-highlight" style="margin-top: var(--space-xxl);">
+                <h4 style="color: var(--primary-dark);">投稿テンプレート構成</h4>
+                <div style="margin-top: var(--space-lg);">
+                    <p><strong>1. この記事を書いた人</strong> - 専門性と信頼性の明示</p>
+                    <p><strong>2. サービスの説明や強み</strong> - 他社との差別化ポイント</p>
+                    <p><strong>3. 投稿の背景</strong> - なぜ当社がこれを発信するのか、歴史や理念との関連性</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 業種別信頼構築戦略の実践例 -->
+    <section class="section" id="section-7">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">7</div>
+                <h2 class="section-title">業種別信頼構築戦略の実践例</h2>
+                <p class="section-subtitle">各業界の特性を活かした専門的アプローチ</p>
+            </div>
+            
+            <div class="grid-2col">
+                <div class="industry-card">
+                    <h3 class="industry-title">歯科医院向け戦略</h3>
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h4 style="color: var(--text-primary); margin-bottom: var(--space-md);">治療の「なぜ」を明確に説明</h4>
+                        <p>患者の不安を解消する専門的で分かりやすい説明コンテンツ</p>
+                    </div>
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h4 style="color: var(--text-primary); margin-bottom: var(--space-md);">治療プロセスの透明化</h4>
+                        <p>治療手順と理由を明示し、患者の理解と安心を促進</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: var(--space-md);">院長・スタッフの人柄訴求</h4>
+                        <p>専門性とともに人間味を伝える親しみやすさの演出</p>
+                    </div>
+                </div>
+                
+                <div class="industry-card">
+                    <h3 class="industry-title">葬儀業界向け戦略</h3>
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h4 style="color: var(--text-primary); margin-bottom: var(--space-md);">相談しやすい雰囲気づくり</h4>
+                        <p>「近寄りがたい」イメージを払拭する親身な対応力のアピール</p>
+                    </div>
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h4 style="color: var(--text-primary); margin-bottom: var(--space-md);">サービス内容の透明化</h4>
+                        <p>料金体系やサービス詳細の明確な説明で不安を解消</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: var(--space-md);">働くスタッフの日常紹介</h4>
+                        <p>採用促進も兼ねた職場環境と企業文化の魅力発信</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 撮影技術に依存しない効率的制作手法 -->
+    <section class="section" id="section-8" style="background: var(--primary-light);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">8</div>
+                <h2 class="section-title">撮影技術に依存しない効率的制作手法</h2>
+                <p class="section-subtitle">専門性重視で高品質なコンテンツを低コストで実現</p>
+            </div>
+            
+            <div class="grid-3col">
+                <div class="card">
+                    <h4 class="card-title">スライド形式の解説投稿</h4>
+                    <p>PowerPoint的な分かりやすい図解で複雑な専門知識を視覚的に整理。学術資料や統計データを効果的に活用。</p>
+                </div>
+                
+                <div class="card">
+                    <h4 class="card-title">自然な説明動画</h4>
+                    <p>高度な編集技術不要で、専門家としての知見を素直に伝える動画コンテンツ。信頼性と親しみやすさを両立。</p>
+                </div>
+                
+                <div class="card">
+                    <h4 class="card-title">統計データ・グラフ活用</h4>
+                    <p>学術論文や公的機関データを活用した信頼性の高い情報提供。専門性の証明と教育効果を同時実現。</p>
+                </div>
+            </div>
+
+            <!-- 実証されたコスト効率データ -->
+            <div class="solution-highlight" style="margin-top: var(--space-xl);">
+                <h4 style="color: var(--primary-dark);">制作手法別の実証されたコスト効率</h4>
+                <p>撮影技術に依存しない手法の有効性が以下のデータで実証されています：</p>
+                <ul style="margin-top: var(--space-md); padding-left: var(--space-lg);">
+                    <li><strong>UGC活用:</strong> <span class="stat-highlight">400%</span>の平均ROIを実現（出典: InBeat Agency）</li>
+                    <li><strong>専門解説コンテンツ:</strong> <span class="stat-highlight">78%</span>のCTR向上（出典: WiserNotify）</li>
+                    <li><strong>制作コスト:</strong> 従来型撮影の<span class="stat-highlight">75%</span>削減が可能</li>
+                </ul>
+            </div>
+            
+            <div class="solution-highlight" style="margin-top: var(--space-xxl);">
+                <h4 style="color: var(--primary-dark);">制作効率化のメリット</h4>
+                <div class="grid-2col" style="margin-top: var(--space-lg);">
+                    <div>
+                        <p><strong>コスト削減:</strong> 高額な撮影費用が不要</p>
+                        <p><strong>品質安定:</strong> 専門知識に基づく一貫した内容</p>
+                    </div>
+                    <div>
+                        <p><strong>迅速対応:</strong> タイムリーな情報発信が可能</p>
+                        <p><strong>継続性:</strong> 長期的な運用が現実的</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. 信頼と実績に基づく強固な運営体制 -->
+    <section class="section" id="section-9">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">9</div>
+                <h2 class="section-title">信頼と実績に基づく強固な運営体制</h2>
+                <p class="section-subtitle">H2Technology × AsetZ の専門性統合</p>
+            </div>
+            
+            <div class="grid-2col">
+                <div class="card" style="border-top: 4px solid var(--primary);">
+                    <h3 style="color: var(--primary-dark); margin-bottom: var(--space-lg);">H2Technology - MEO事業の確固たる基盤</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--space-md);">✅ toC事業企業の強み・弱み完全把握</li>
+                        <li style="margin-bottom: var(--space-md);">✅ smartMEO運営で培った圧倒的な運用実績</li>
+                        <li style="margin-bottom: var(--space-md);">✅ 安価なサービスとは一線を画す信頼性重視の運用体制</li>
+                        <li>✅ 豊富なナレッジと業界での確固たる信用</li>
+                    </ul>
+                </div>
+                
+                <div class="card" style="border-top: 4px solid var(--success);">
+                    <h3 style="color: var(--success); margin-bottom: var(--space-lg);">AsetZ - AI・最新技術の専門性</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--space-md);">✅ AI等最新情報の圧倒的キャッチアップ力</li>
+                        <li style="margin-bottom: var(--space-md);">✅ マーケティング×DX領域の専門支援</li>
+                        <li style="margin-bottom: var(--space-md);">✅ データドリブンで本質を捉えた課題解決</li>
+                        <li style="margin-bottom: var(--space-md);">✅ 年単位継続クライアントのみ、口コミ中心の運営</li>
+                        <li>✅ Instagram運用の深い知見と豊富な実経験</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 実績データのグラフ -->
+            <div class="chart-container">
+                <h3 class="chart-title">両社の実績データ</h3>
+                <div class="solution-highlight">
+                    <h4 style="color: var(--primary-dark);">実証された運営実績</h4>
+                    <ul style="margin-top: var(--space-md); padding-left: var(--space-lg);">
+                        <li><strong>H2Technology:</strong> MEO事業における安定した運営実績とクライアント信頼関係</li>
+                        <li><strong>AsetZ:</strong> AI・DX領域での専門性と年単位継続クライアント実績</li>
+                        <li><strong>統合効果:</strong> 両社の専門性を活かした包括的支援体制の構築</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="achievement-card" style="margin-top: var(--space-xxl); background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);">
+                <h3 style="margin-bottom: var(--space-lg);">両社統合の競争優位性</h3>
+                <p style="font-size: var(--font-body-large); line-height: 1.8;">今回掲げる信頼構築型コンセプトで、この時代に貴社の価値を最大限引き上げる運用支援を実現。従来のSNS運用を超えた、真の事業成長を支援いたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. 総合マーケティング支援への展望 -->
+    <section class="section" id="section-10" style="background: var(--neutral-50);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2 class="section-title">Instagram運用を起点とした総合マーケティング支援</h2>
+                <p class="section-subtitle">信頼構築型アプローチからトータルソリューションへ</p>
+            </div>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Instagram信頼構築</h4>
+                    <p class="step-description">専門性重視の運用で信頼関係を構築</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">Web施策全体最適化</h4>
+                    <p class="step-description">サイテーション強化とAISEO対応</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">トータルソリューション</h4>
+                    <p class="step-description">派生するマーケティング課題の包括支援</p>
+                </div>
+            </div>
+
+            <!-- 展開可能なサービス領域 -->
+            <div class="solution-highlight" style="margin-top: var(--space-xl);">
+                <h3 style="color: var(--primary-dark);">展開可能なマーケティング領域</h3>
+                <p>Instagram運用を起点として、以下の領域での包括的支援が可能です：</p>
+                <ul style="margin-top: var(--space-md); padding-left: var(--space-lg);">
+                    <li><strong>SNS運用支援:</strong> Instagram以外のプラットフォーム最適化</li>
+                    <li><strong>SEO・コンテンツ:</strong> Web全体でのサイテーション強化</li>
+                    <li><strong>Web制作・改善:</strong> コンバージョン最適化支援</li>
+                    <li><strong>データ分析:</strong> AI時代に対応した効果測定</li>
+                    <li><strong>DX支援:</strong> 業務効率化とマーケティング自動化</li>
+                </ul>
+            </div>
+            
+            <div class="solution-highlight" style="margin-top: var(--space-xxl);">
+                <h4 style="color: var(--primary-dark);">長期的パートナーシップ</h4>
+                <p>単なるInstagram運用代行に留まらず、Web施策全体の視点を持った運用支援により、お客様の事業成長に伴って生じる様々なマーケティング課題に対しても、必要に応じてトータルソリューションをご提供いたします。</p>
+            </div>
+            
+            <div class="source-citation">
+                <strong>市場データ補強:</strong> Instagram活用企業の<span class="stat-highlight">88%</span>が戦略を効果的と評価し、<span class="stat-highlight">68%</span>がプラスROIを報告。Instagram Shopping統合企業の<span class="stat-highlight">71%</span>が高ROIを実現している。<br>
+                <strong>出典:</strong> <a href="https://blog.hubspot.com/marketing/instagram-marketing-report" target="_blank" rel="noopener">HubSpot Instagram Marketing Report 2024</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">まずは無料相談から始めませんか？</h2>
+            <p style="font-size: var(--font-body-large); margin-bottom: var(--space-lg); line-height: 1.8;">
+                「映えない業界」だからこそ活かせる専門性があります。<br>
+                信頼構築型Instagram運用で、真の競争優位性を構築しましょう。
+            </p>
+            <a href="#contact" class="cta-button">無料相談・お問い合わせはこちら</a>
+            <p style="font-size: var(--font-body-small); margin-top: var(--space-lg); opacity: 0.8; line-height: 1.6;">
+                現状分析と改善提案を無料でご提供いたします
+            </p>
+        </div>
+    </section>
+
+    <!-- 11. サービス内容と料金設定 -->
+    <!-- 11. サービス内容と料金設定 -->
+<section class="section" id="section-11">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-number">11</div>
+            <h2 class="section-title">サービス内容と料金設定</h2>
+            <p class="section-subtitle">信頼構築に特化した包括的Instagram運用支援</p>
+        </div>
+
+        <!-- プラン比較カード -->
+        <div class="pricing-cards-container">
+            <div class="pricing-card standard-plan">
+                <div class="popular-badge">おすすめ</div>
+                <div class="plan-header">
+                    <h3>スタンダードプラン</h3>
+                    <div class="campaign-notice">キャンペーン特価</div>
+                    <div class="price-section">
+                        <div class="price-original">¥180,000</div>
+                        <div class="price-current">¥120,000</div>
+                        <div class="price-period">/月</div>
+                    </div>
+                    <p class="plan-description">信頼構築型運用の基本パッケージ</p>
+                </div>
+            </div>
+            
+            <div class="pricing-card premium-plan">
+                <div class="plan-header">
+                    <h3>フルパッケージプラン</h3>
+                    <div class="price-section">
+                        <div class="price-current">¥400,000~</div>
+                        <div class="price-period">/月</div>
+                    </div>
+                    <p class="plan-description">完全運用代行・コンサルティング</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 詳細比較表 -->
+        <div class="comparison-table-container">
+            <table class="service-comparison-table">
+                <thead>
+                    <tr>
+                        <th class="feature-column">サービス内容</th>
+                        <th class="plan-column standard-header">
+                            <div class="plan-header-content">
+                                <div class="popular-indicator">おすすめ</div>
+                                <h3>スタンダードプラン</h3>
+                                <div class="campaign-badge">キャンペーン中</div>
+                            </div>
+                        </th>
+                        <th class="plan-column premium-header">
+                            <div class="plan-header-content">
+                                <h3>フルパッケージプラン</h3>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1. 戦略立案・企画 -->
+                    <tr class="category-row">
+                        <td colspan="3" class="category-header">1. 戦略立案・企画</td>
+                    </tr>
+                    <!-- アカウント設計 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">アカウント設計</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ペルソナ設定<br><small>ターゲット顧客の詳細定義・架空理想顧客像作成・来店動機分析</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ブランディング方針策定<br><small>強み・差別化ポイント明確化・トーンマナー・統一ガイドライン策定</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">KPI・KGI設定<br><small>最終目標と中間指標の数値化・達成期限・測定方法設定</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">競合アカウント選定・分析（5-10社）<br><small>成功アカウント分析・ベンチマークリスト作成</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- コンテンツ戦略 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">コンテンツ戦略</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">年間コンテンツカレンダー作成<br><small>12ヶ月分投稿テーマ設定・月別重点キャンペーン計画</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">月間投稿計画立案<br><small>具体的投稿日時・内容・形式の週単位計画・撮影素材リスト作成</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">キャンペーン企画<br><small>目的別プレゼント企画・参加条件設計・効果測定指標設定</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">UGC促進戦略設計<br><small>投稿インセンティブ設計・専用ハッシュタグ・促進マニュアル作成</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- ハッシュタグ戦略 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">ハッシュタグ戦略</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">業種別ハッシュタグリサーチ<br><small>人気タグ選定・エンゲージメント率分析・競合使用状況調査</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">トレンドハッシュタグ調査<br><small>週次急上昇タグ抽出・関連性評価・トレンドカレンダー記録</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">オリジナルハッシュタグ開発<br><small>独自タグ作成・商標確認・使用ガイドライン策定</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ハッシュタグ効果測定<br><small>タグ別リーチ・エンゲージメント分析・最適化リスト更新</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+
+                    <!-- 2. コンテンツ制作 -->
+                    <tr class="category-row">
+                        <td colspan="3" class="category-header">2. コンテンツ制作</td>
+                    </tr>
+                    <!-- フィード投稿 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">フィード投稿</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">撮影ディレクション（マニュアル提供）<br><small>撮影コンセプト・構図・照明指示書・進行表作成</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">画像編集・加工<br><small>明るさ・コントラスト調整・不要物除去・統一フィルター適用</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">投稿文作成<br><small>フック文・本文・CTA・ハッシュタグ構成で150-300文字作成</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ハッシュタグ選定<br><small>最適5-10個選定・ビッグ・ミドル・スモール・地域タグバランス配置</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- カルーセル投稿 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">カルーセル投稿</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">スライド企画・構成<br><small>1枚目興味喚起・2-9枚目詳細説明・最終行動促進の流れ設計</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">デザイン制作<br><small>ブランドガイドライン準拠・テンプレート作成・視認性重視レイアウト</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">テキスト作成<br><small>各スライド20-50文字・要点簡潔まとめ・スマホ可読性確保</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- 動画投稿 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">動画投稿</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">動画企画<br><small>15-60秒尺設計・起承転結・シナリオ・必要カットリスト作成</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">撮影（マニュアル提供）<br><small>手ブレ防止・複数アングル・音声収録・予備カット指導</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">編集<br><small>カット・速度調整・トランジション・BGM・ロゴ・CTAテロップ挿入</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- リール -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">リール</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">トレンド音源リサーチ<br><small>人気楽曲TOP20調査・使用数・ジャンル・相性評価・週間リスト作成</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">台本・構成作成<br><small>15-30秒完結構成・カット割り・セリフ・動き・テロップ詳細記載</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">撮影<br><small>縦型（9:16）・複数テイク・音源シンクロ・トレンド動き収録</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">編集（エフェクト・字幕）<br><small>カット・速度調整・エフェクト・字幕挿入・視聴完了率向上</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">サムネイル作成<br><small>魅力的ワンシーン選択・テキストオーバーレイ・フィード映え設定</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- ストーリーズ -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">ストーリーズ</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">日常投稿企画<br><small>24時間限定裏側・限定情報企画・親近感コンテンツテーマ設定</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">素材作成・編集<br><small>15秒以内コンテンツ・写真動画テキスト組み合わせ・統一感演出</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">スタンプ・GIF選定<br><small>位置情報・メンション・ハッシュタグスタンプ配置・動的演出追加</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">インタラクティブ機能<br><small>アンケート・質問BOX・クイズ作成・エンゲージメント向上施策</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ハイライト管理<br><small>カテゴリー設計・カバー画像作成・コンテンツ整理・定期更新</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <tr class="highlight-row">
+                        <td class="feature-name"><strong>月間投稿数</strong></td>
+                        <td class="feature-highlight"><strong>4回保証</strong></td>
+                        <td class="feature-highlight"><strong>6回以上</strong></td>
+                    </tr>
+
+                    <!-- 3. 運用・エンゲージメント -->
+                    <tr class="category-row">
+                        <td colspan="3" class="category-header">3. 運用・エンゲージメント</td>
+                    </tr>
+                    <!-- 投稿管理 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">投稿管理</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">投稿時間最適化<br><small>エンゲージメント率分析・アクティブ時間特定・最適投稿時間決定</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">予約投稿設定<br><small>Meta Business Suite活用・1週間分事前設定・自動投稿管理</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">投稿カレンダー管理<br><small>月間投稿予定可視化・コンテンツバランス・撮影日一元管理</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- エンゲージメント -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">エンゲージメント対応</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">コメント対応代行<br><small>24時間以内返信・30-100文字個別対応・ブランドボイス維持</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">返信文作成<br><small>感謝・共感・追加情報提供・個別対応文作成</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ネガティブコメント対応<br><small>批判的コメント丁寧返信・事実確認謝罪・DM個別対応提案</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">FAQ作成・更新<br><small>よくある質問整理・テンプレート準備・月次内容更新</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- DM対応 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">DM対応</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">問い合わせ返信<br><small>2時間以内返信・料金予約商品問い合わせ回答・来店購入誘導</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">予約・注文対応<br><small>DM予約システム転記・確認メッセージ・在庫確認・受注処理</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">自動返信設定<br><small>営業時間外自動返信・返信予定時間・緊急連絡先・FAQ案内</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- いいね・フォロー -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">いいね・フォロー活動</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">アクティブいいね活動<br><small>ターゲット投稿1日50-100いいね・認知拡大・フォロー誘導</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">フォロー/フォロワー管理<br><small>非アクティブ・スパムアカウント整理・フォロー比率適正管理</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- コミュニティ管理 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">コミュニティ管理</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">リポスト運用<br><small>ブランドタグ・メンション投稿確認・ストーリーズシェア・感謝DM</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">UGCキャンペーン運営<br><small>募集要項作成・応募収集・選定・当選連絡・賞品発送運営</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ユーザー投稿監視<br><small>ブランド関連キーワード・ハッシュタグ検索・お礼コメント・関係構築</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- インフルエンサー -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">インフルエンサー連携</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">マイクロインフルエンサー発掘<br><small>1,000-10,000フォロワー高エンゲージメント・親和性評価・候補リスト</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">コラボ企画・交渉<br><small>相互メリット企画立案・条件交渉・契約書作成・投稿管理</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">効果測定<br><small>コラボ投稿リーチ・エンゲージメント・フォロワー増加・ROI算出</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+
+                    <!-- 4. 分析・レポーティング -->
+                    <tr class="category-row">
+                        <td colspan="3" class="category-header">4. 分析・レポーティング</td>
+                    </tr>
+                    <!-- データ収集 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">データ収集・基本指標</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">フォロワー推移記録<br><small>日次記録・週次月次成長率算出・増減要因分析レポート</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">エンゲージメント率計算<br><small>投稿タイプ別・時間帯別・曜日別分析・改善ポイント特定</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">リーチ・インプレッション集計<br><small>各投稿記録・ハッシュタグ発見タブ経由割合分析</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- 詳細分析 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">詳細分析</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">投稿別パフォーマンス分析<br><small>24時間後・1週間後測定・高低パフォーマンス共通要素抽出</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">時間帯別効果測定<br><small>1時間単位集計・曜日組み合わせ・最適投稿時間マトリクス作成</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ハッシュタグ効果分析<br><small>タグ別リーチ貢献度測定・発見タブ表示率相関分析</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- 競合分析 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">競合分析</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">競合投稿モニタリング<br><small>5-10社週間投稿記録・トレンド成功事例抽出・自社戦略反映</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ベンチマーク比較<br><small>自社競合KPI比較・業界内ポジショニング・改善項目可視化</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">トレンド分析<br><small>投稿傾向・人気コンテンツ・新機能活用状況調査・実装提案</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- レポート作成 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">レポート作成</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">週次レポート作成<br><small>1週間実績・エンゲージメント推移・改善アクション3つ提示</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">月次レポート作成<br><small>KPI達成状況・成功改善事例・競合動向・翌月戦略グラフ可視化</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">四半期レポート作成<br><small>3ヶ月成長推移・ROI分析・市場環境変化・中期戦略見直し</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- カスタムレポート -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">カスタムレポート</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ROI分析レポート<br><small>売上来店数集計・運用コスト対効果算出・投資継続判断指標</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">来店効果測定レポート<br><small>位置情報タップ・DM問い合わせ・クーポン利用・実来店数推計</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">キャンペーン効果レポート<br><small>参加者数・リーチ拡大・フォロワー獲得・UGC生成・売上影響測定</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+
+                    <!-- 5. 広告・プロモーション -->
+                    <tr class="category-row">
+                        <td colspan="3" class="category-header">5. 広告・プロモーション</td>
+                    </tr>
+                    <!-- Instagram広告 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">Instagram広告</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">広告設計<br><small>ターゲティング設定・詳細オーディエンス・類似カスタムオーディエンス活用</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">クリエイティブ制作<br><small>広告目的別画像動画制作・複数バリエーション・A/Bテスト素材準備</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">予算配分計画<br><small>日予算・期間・入札戦略・目標CPA/ROAS・配信面別予算配分</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- 広告運用 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">広告運用</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">キャンペーン設定<br><small>階層構造設定・配信スケジュール・地域デバイス最適化</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">A/Bテスト実施<br><small>要素別テスト設計・統計的有意性確認・勝ちパターン特定</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">入札調整<br><small>配信状況日次モニタリング・パフォーマンス応じた調整・効率最大化</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- 効果測定 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">効果測定</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">CPA/ROAS分析<br><small>コンバージョン単価・広告費用対効果日次追跡・目標値乖離分析</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">コンバージョン追跡<br><small>ピクセル/API設置・購入問い合わせ来店計測・経路分析</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- プロモーション -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">プロモーション</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">キャンペーン企画立案<br><small>季節性記念日新商品・集客認知向上・テーマメカニックスケジュール設計</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">実施・運営<br><small>告知投稿作成・広告配信・店頭POP連携・スタッフ教育・参加状況監視</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">結果集計・分析<br><small>参加者数・売上影響・コスト・顧客満足度・目標達成度・改善点文書化</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- コラボレーション -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">コラボレーション</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">パートナー企業開拓<br><small>相互シナジー非競合企業リストアップ・提案資料作成・条件交渉</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">コラボ投稿企画<br><small>両社強み活用企画・投稿内容タイミング・相互メンション・費用分担調整</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+
+                    <!-- 6. 技術・システム -->
+                    <tr class="category-row">
+                        <td colspan="3" class="category-header">6. 技術・システム</td>
+                    </tr>
+                    <!-- ツール管理 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">ツール管理</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Instagram Insights設定<br><small>ビジネスアカウント設定確認・アクセス権限付与・初期レクチャー</small></td>
+                        <td class="feature-check">✔︎</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- 連携・統合 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">連携・統合</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Facebook連携設定<br><small>FacebookページとInstagram連携・広告アカウント統合・一元管理体制構築</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">クロスポスト設定<br><small>Instagram自動Facebook投稿・プラットフォーム別最適化設定</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+
+                    <!-- 7. 教育・サポート -->
+                    <tr class="category-row">
+                        <td colspan="3" class="category-header">7. 教育・サポート</td>
+                    </tr>
+                    <!-- クライアント教育 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">クライアント教育</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">基本操作研修<br><small>アカウント設定・投稿方法・インサイト確認・独力運用レベル教育</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">投稿作成研修<br><small>撮影技法・編集アプリ・文章作成・ブランドガイドライン習得</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">分析ツール使い方研修<br><small>データ取得・分析・レポート作成・改善施策立案スキル育成</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- ナレッジ共有 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">ナレッジ共有</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">成功事例共有会<br><small>月間ベスト投稿要因分析・他社成功事例・ディスカッション・アイデア創出</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">トレンド情報共有<br><small>新機能・アルゴリズム変更・業界トレンド解説・対応方法・活用事例</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">FAQ更新・共有<br><small>よくある質問解決方法文書化・クラウドアクセス・月次内容更新</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    
+                    <!-- サポート -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">定期面談</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td class="feature-name"><strong>月次戦略会議</strong><br><small>実績レビュー・目標評価・改善施策決定・翌月計画承認</small></td>
+                        <td class="feature-highlight"><strong>✔︎ (60-90分)</strong></td>
+                        <td class="feature-highlight"><strong>✔︎ (90分)</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">進捗確認ミーティング<br><small>週次15-30分・投稿スケジュール確認・課題共有・微調整・軌道修正</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎ (30分)</td>
+                    </tr>
+                    
+                    <!-- 緊急対応 -->
+                    <tr class="subcategory-row">
+                        <td colspan="3" class="subcategory-header">緊急対応</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">トラブルシューティング<br><small>アカウント不具合・投稿エラー・システム障害・原因特定・迅速解決</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">炎上対策<br><small>ネガティブコメント殺到・批判的拡散・初動対応・公式声明・沈静化施策</small></td>
+                        <td class="feature-cross">×</td>
+                        <td class="feature-check">✔︎</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 年間実施スケジュール -->
+        <div style="margin-top: 64px;">
+            <h3 style="color: #2C3E50; margin-bottom: 32px; text-align: center; font-size: 1.6rem;">スタンダードプラン年間実施スケジュール</h3>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-month">1ヶ月目</div>
+                    <div class="timeline-content">
+                        <h4>基盤構築フェーズ</h4>
+                        <p>• アカウント設計・ペルソナ設定<br>• ブランディング方針策定<br>• 競合分析・年間カレンダー作成<br>• 撮影マニュアル提供</p>
+                        <div class="timeline-posts">投稿: セットアップ完了後開始</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-month">2-3ヶ月目</div>
+                    <div class="timeline-content">
+                        <h4>運用開始・最適化</h4>
+                        <p>• 月間投稿計画実行<br>• エンゲージメント分析開始<br>• 投稿時間最適化<br>• 月次戦略会議実施</p>
+                        <div class="timeline-posts">投稿: 月4回保証</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-month">4-6ヶ月目</div>
+                    <div class="timeline-content">
+                        <h4>効果測定・改善</h4>
+                        <p>• パフォーマンス詳細分析<br>• ハッシュタグ効果測定<br>• コンテンツ戦略調整<br>• 競合ベンチマーク更新</p>
+                        <div class="timeline-posts">投稿: 効果に応じて増加検討</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-month">7-12ヶ月目</div>
+                    <div class="timeline-content">
+                        <h4>成長・発展フェーズ</h4>
+                        <p>• 四半期レポート作成<br>• 戦略的改善提案<br>• 新機能活用検討<br>• 次年度計画策定</p>
+                        <div class="timeline-posts">投稿: 安定運用継続</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 重要ポイント -->
+        <div class="solution-highlight" style="margin-top: 64px;">
+            <h4 style="color: #2B7A78;">サービス提供の重要ポイント</h4>
+            <div class="grid-2col" style="margin-top: 32px;">
+                <div>
+                    <p><strong>柔軟な実施タイミング:</strong> 全項目を毎月実施するのではなく、契約期間中に必要なタイミングで必要回数実施</p>
+                    <p><strong>戦略重視の運用:</strong> 初期は戦略設計に集中し、2ヶ月目から本格的な投稿運用を開始</p>
+                </div>
+                <div>
+                    <p><strong>投稿品質保証:</strong> 月4回の高品質投稿を保証し、戦略状況に応じて増加対応</p>
+                    <p><strong>継続的改善:</strong> 定期的な効果測定と戦略調整で持続的な成果向上を実現</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="source-citation">
+            <strong>価格設定根拠:</strong> 従来のInstagram運用代行市場において、スタンダードレベル（10-20万円/月）は<span class="stat-highlight">15社</span>が競合する最激戦区。信頼構築特化により差別化を実現。<br>
+            <strong>出典:</strong> サイバー・バズ: 2024年のソーシャルメディアマーケティング市場調査
+        </div>
+    </div>
+
+    <style>
+        /* 価格カードコンテナ */
+        .pricing-cards-container {
+            display: flex;
+            gap: 24px;
+            margin: 48px 0;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            flex: 1;
+            max-width: 350px;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.standard-plan {
+            border-color: #4ECDC4;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4ECDC4;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .plan-header h3 {
+            font-size: 1.4rem;
+            color: #2C3E50;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .campaign-notice {
+            background: #F39C12;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .price-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #95A5A6;
+            font-size: 1rem;
+        }
+
+        .price-current {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2C3E50;
+            display: inline;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: #7F8C8D;
+            display: inline;
+        }
+
+        .plan-description {
+            text-align: center;
+            color: #7F8C8D;
+            font-size: 0.9rem;
+        }
+
+        /* 比較表 */
+        .comparison-table-container {
+            overflow-x: auto;
+            margin: 48px 0;
+        }
+
+        .service-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .service-comparison-table th,
+        .service-comparison-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #E9ECEF;
+        }
+
+        .feature-column {
+            width: 50%;
+            background: #F8F9FA;
+            font-weight: 600;
+            color: #2C3E50;
+        }
+
+        .plan-column {
+            width: 25%;
+            text-align: center;
+        }
+
+        .standard-header {
+            background: #E8F4F8;
+            border-left: 3px solid #4ECDC4;
+        }
+
+        .premium-header {
+            background: #F8F9FA;
+        }
+
+        .plan-header-content h3 {
+            font-size: 1.1rem;
+            margin: 4px 0;
+            color: #2C3E50;
+        }
+
+        .popular-indicator {
+            background: #4ECDC4;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .campaign-badge {
+            background: #F39C12;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+        }
+
+        .category-row {
+            background: #2B7A78;
+        }
+
+        .category-header {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .subcategory-row {
+            background: #4ECDC4;
+        }
+
+        .subcategory-header {
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .feature-name {
+            color: #2C3E50;
+            font-weight: 500;
+        }
+
+        .feature-name small {
+            display: block;
+            color: #7F8C8D;
+            font-weight: 400;
+            margin-top: 4px;
+            font-size: 0.85rem;
+        }
+
+        .feature-check {
+            text-align: center;
+            color: #27AE60;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .feature-cross {
+            text-align: center;
+            color: #E74C3C;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .highlight-row {
+            background: #E8F4F8;
+        }
+
+        .feature-highlight {
+            text-align: center;
+            color: #2B7A78;
+            font-weight: 700;
+        }
+
+        /* タイムライン */
+        .timeline-container {
+            position: relative;
+            margin: 32px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 32px;
+            align-items: flex-start;
+        }
+
+        .timeline-month {
+            background: #4ECDC4;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            min-width: 120px;
+            text-align: center;
+            margin-right: 24px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            color: #2B7A78;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content p {
+            color: #2C3E50;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .timeline-posts {
+            background: #E8F4F8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #2B7A78;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ハイライトボックス */
+        .solution-highlight {
+            background: linear-gradient(135deg, #E8F4F8 0%, #F8FFFE 100%);
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid #4ECDC4;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .source-citation {
+            background: #F8F9FA;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 48px;
+            font-size: 0.9rem;
+            color: #7F8C8D;
+        }
+
+        .stat-highlight {
+            background: #F39C12;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .pricing-cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card.standard-plan {
+                transform: none;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-month {
+                margin-right: 0;
+                margin-bottom: 16px;
+                align-self: flex-start;
+            }
+
+            .service-comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .service-comparison-table th,
+            .service-comparison-table td {
+                padding: 12px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature-name small {
+                font-size: 0.8rem;
+            }
+
+            .price-current {
+                font-size: 1.8rem;
+            }
+
+            .timeline-content {
+                padding: 16px;
+            }
+
+            .solution-highlight {
+                padding: 20px;
+            }
+        }
+    </style>
+</section>
+
+    <!-- 目次更新 -->
+    <script>
+        // ページ読み込み後に目次を更新
+        document.addEventListener('DOMContentLoaded', function() {
+            // トップ目次の更新
+            const topToc = document.querySelector('.toc-list');
+            if (topToc) {
+                const newItem = document.createElement('li');
+                newItem.className = 'toc-item';
+                newItem.innerHTML = '<a href="#section-11">11. サービス内容と料金設定</a>';
+                topToc.appendChild(newItem);
+            }
+            
+            // フローティング目次の更新
+            const floatingToc = document.querySelector('.floating-toc-list');
+            if (floatingToc) {
+                const newItem = document.createElement('li');
+                newItem.className = 'floating-toc-item';
+                newItem.innerHTML = '<a href="#section-11" class="floating-toc-link" onclick="closeFloatingToc()">11. サービス内容と料金設定</a>';
+                floatingToc.appendChild(newItem);
+            }
+        });
+    </script>
+    <div class="floating-toc">
+        <button class="floating-toc-toggle" onclick="toggleFloatingToc()">
+            📋
+        </button>
+        <div class="floating-toc-menu" id="floatingTocMenu">
+            <div class="floating-toc-header">目次</div>
+            <ul class="floating-toc-list">
+                <li class="floating-toc-item">
+                    <a href="#section-1" class="floating-toc-link" onclick="closeFloatingToc()">1. Instagram運用の問題点</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-2" class="floating-toc-link" onclick="closeFloatingToc()">2. 「映えない業界」の課題と機会</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-3" class="floating-toc-link" onclick="closeFloatingToc()">3. Webサイテーションの一翼</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-4" class="floating-toc-link" onclick="closeFloatingToc()">4. 信頼構築が最重要な理由</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-5" class="floating-toc-link" onclick="closeFloatingToc()">5. アカウント設計</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-6" class="floating-toc-link" onclick="closeFloatingToc()">6. 投稿戦略</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-7" class="floating-toc-link" onclick="closeFloatingToc()">7. 業種別戦略</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-8" class="floating-toc-link" onclick="closeFloatingToc()">8. 制作手法</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-9" class="floating-toc-link" onclick="closeFloatingToc()">9. 運営体制</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-10" class="floating-toc-link" onclick="closeFloatingToc()">10. 総合支援への展望</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleFloatingToc() {
+            const menu = document.getElementById('floatingTocMenu');
+            menu.classList.toggle('active');
+        }
+        
+        function closeFloatingToc() {
+            const menu = document.getElementById('floatingTocMenu');
+            menu.classList.remove('active');
+        }
+        
+        // クリック外でメニューを閉じる
+        document.addEventListener('click', function(event) {
+            const toc = document.querySelector('.floating-toc');
+            const menu = document.getElementById('floatingTocMenu');
+            
+            if (!toc.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
