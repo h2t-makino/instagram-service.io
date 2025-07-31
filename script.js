@@ -53,6 +53,135 @@ function closeFloatingToc() {
 }
 
 /* ========================================
+   レーダーチャート機能（新規追加）
+======================================== */
+
+/**
+ * レーダーチャートを描画する
+ */
+function drawRadarChart() {
+    const canvas = document.getElementById('radarChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const centerX = 250;
+    const centerY = 250;
+    const radius = 180;
+    
+    // データポイント (6軸: 価格競争力, 戦略先進性, 業界専門性, 実用性, 持続可能性, 総合力)
+    const companies = {
+        'SNS運用ドットコム': [5, 2, 2, 3, 3, 3],
+        'ジソウ': [1, 4, 3, 4, 4, 3.2],
+        'ホットリンク': [1, 5, 4, 4, 3, 3.4],
+        '弊社サービス': [4, 5, 5, 5, 5, 4.8]
+    };
+    
+    const colors = {
+        'SNS運用ドットコム': '#27ae60',
+        'ジソウ': '#e74c3c',
+        'ホットリンク': '#9b59b6',
+        '弊社サービス': '#4ECDC4'
+    };
+    
+    const labels = ['価格競争力', '戦略先進性', '業界専門性', '実用性', '持続可能性', '総合力'];
+    
+    // 背景の六角形グリッドを描画
+    function drawGrid() {
+        ctx.strokeStyle = '#e0e0e0';
+        ctx.lineWidth = 1;
+        
+        for (let level = 1; level <= 5; level++) {
+            ctx.beginPath();
+            const levelRadius = (radius * level) / 5;
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI) / 3 - Math.PI / 2;
+                const x = centerX + levelRadius * Math.cos(angle);
+                const y = centerY + levelRadius * Math.sin(angle);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+        
+        // 軸線を描画
+        for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3 - Math.PI / 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(
+                centerX + radius * Math.cos(angle),
+                centerY + radius * Math.sin(angle)
+            );
+            ctx.stroke();
+        }
+    }
+    
+    // ラベルを描画
+    function drawLabels() {
+        ctx.fillStyle = '#4ECDC4';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        
+        for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3 - Math.PI / 2;
+            const labelRadius = radius + 30;
+            const x = centerX + labelRadius * Math.cos(angle);
+            const y = centerY + labelRadius * Math.sin(angle);
+            ctx.fillText(labels[i], x, y + 4);
+        }
+    }
+    
+    // 各社のデータを描画
+    function drawCompanyData(company, data, color, lineWidth = 2) {
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color + '20';
+        ctx.lineWidth = lineWidth;
+        
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3 - Math.PI / 2;
+            const value = data[i];
+            const pointRadius = (radius * value) / 5;
+            const x = centerX + pointRadius * Math.cos(angle);
+            const y = centerY + pointRadius * Math.sin(angle);
+            
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        
+        // データポイントを描画
+        ctx.fillStyle = color;
+        for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3 - Math.PI / 2;
+            const value = data[i];
+            const pointRadius = (radius * value) / 5;
+            const x = centerX + pointRadius * Math.cos(angle);
+            const y = centerY + pointRadius * Math.sin(angle);
+            
+            ctx.beginPath();
+            ctx.arc(x, y, company === '弊社サービス' ? 6 : 4, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+    }
+    
+    // 描画実行
+    drawGrid();
+    drawLabels();
+    
+    // 他社を先に描画（薄く）
+    drawCompanyData('SNS運用ドットコム', companies['SNS運用ドットコム'], colors['SNS運用ドットコム'], 1.5);
+    drawCompanyData('ジソウ', companies['ジソウ'], colors['ジソウ'], 1.5);
+    drawCompanyData('ホットリンク', companies['ホットリンク'], colors['ホットリンク'], 1.5);
+    
+    // 弊社を最後に描画（太く強調）
+    drawCompanyData('弊社サービス', companies['弊社サービス'], colors['弊社サービス'], 3);
+}
+
+/* ========================================
    ページ読み込み後の初期化処理
 ======================================== */
 document.addEventListener('DOMContentLoaded', function() {
@@ -72,6 +201,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 比較表の初期化
     initializeComparisonTable();
     
+    // レーダーチャートの初期化
+    setTimeout(drawRadarChart, 100);
 });
 
 /**
@@ -252,7 +383,7 @@ function setupTableResponsive() {
  * テーブルのアニメーション設定
  */
 function setupTableAnimation() {
-    const rows = document.querySelectorAll('.service-comparison-table tbody tr');
+    const rows = document.querySelectorAll('.service-comparison-table tbody tr, .competitive-table tbody tr');
     
     // Intersection Observer で行のフェードインアニメーション
     const observerOptions = {
@@ -286,25 +417,32 @@ function setupTableAnimation() {
  * テーブルのアクセシビリティ向上
  */
 function setupTableAccessibility() {
-    const table = document.querySelector('.service-comparison-table');
-    if (!table) return;
+    const tables = document.querySelectorAll('.service-comparison-table, .competitive-table');
     
-    // ヘッダーセルにscopeを追加
-    const headerCells = table.querySelectorAll('thead th');
-    headerCells.forEach((cell, index) => {
-        cell.setAttribute('scope', 'col');
-    });
-    
-    // カテゴリ行のセルにscopeを追加
-    const categoryRows = table.querySelectorAll('.category-row td');
-    categoryRows.forEach(cell => {
-        cell.setAttribute('scope', 'colgroup');
-    });
-    
-    // サブカテゴリ行のセルにscopeを追加
-    const subcategoryRows = table.querySelectorAll('.subcategory-row td');
-    subcategoryRows.forEach(cell => {
-        cell.setAttribute('scope', 'colgroup');
+    tables.forEach(table => {
+        // ヘッダーセルにscopeを追加
+        const headerCells = table.querySelectorAll('thead th');
+        headerCells.forEach((cell, index) => {
+            cell.setAttribute('scope', 'col');
+        });
+        
+        // カテゴリ行のセルにscopeを追加
+        const categoryRows = table.querySelectorAll('.category-row td');
+        categoryRows.forEach(cell => {
+            cell.setAttribute('scope', 'colgroup');
+        });
+        
+        // サブカテゴリ行のセルにscopeを追加
+        const subcategoryRows = table.querySelectorAll('.subcategory-row td');
+        subcategoryRows.forEach(cell => {
+            cell.setAttribute('scope', 'colgroup');
+        });
+        
+        // 特徴列のセルにscopeを追加
+        const featureCells = table.querySelectorAll('.compare-feature');
+        featureCells.forEach(cell => {
+            cell.setAttribute('scope', 'row');
+        });
     });
 }
 
@@ -437,7 +575,7 @@ function setupScrollAnimations() {
     }, observerOptions);
     
     // アニメーション対象の要素を監視対象に追加
-    const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card, .stat-card, .concern-item, .strategy-card');
+    const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card, .stat-card, .concern-item, .strategy-card, .metric-card');
     
     animationTargets.forEach(target => {
         // 初期状態を設定
@@ -492,7 +630,7 @@ function animateIndustryContent(contentElement) {
  * 比較表の行ハイライト機能
  */
 function setupTableRowHighlight() {
-    const tableRows = document.querySelectorAll('.service-comparison-table tbody tr');
+    const tableRows = document.querySelectorAll('.service-comparison-table tbody tr, .competitive-table tbody tr');
     
     tableRows.forEach(row => {
         // カテゴリ行とサブカテゴリ行は除外
@@ -512,32 +650,36 @@ function setupTableRowHighlight() {
  * 比較表のスティッキーヘッダー機能
  */
 function setupStickyTableHeader() {
-    const table = document.querySelector('.service-comparison-table');
-    const header = document.querySelector('.service-comparison-table thead');
+    const tables = document.querySelectorAll('.service-comparison-table, .competitive-table');
     
-    if (!table || !header) return;
-    
-    let isSticky = false;
-    
-    window.addEventListener('scroll', function() {
-        const tableRect = table.getBoundingClientRect();
-        const shouldBeSticky = tableRect.top <= 0 && tableRect.bottom > 0;
+    tables.forEach(table => {
+        const header = table.querySelector('thead');
+        if (!header) return;
         
-        if (shouldBeSticky && !isSticky) {
-            header.style.position = 'sticky';
-            header.style.top = '0';
-            header.style.zIndex = '10';
-            header.style.backgroundColor = 'white';
-            header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-            isSticky = true;
-        } else if (!shouldBeSticky && isSticky) {
-            header.style.position = '';
-            header.style.top = '';
-            header.style.zIndex = '';
-            header.style.backgroundColor = '';
-            header.style.boxShadow = '';
-            isSticky = false;
+        let isSticky = false;
+        
+        function checkSticky() {
+            const tableRect = table.getBoundingClientRect();
+            const shouldBeSticky = tableRect.top <= 0 && tableRect.bottom > 0;
+            
+            if (shouldBeSticky && !isSticky) {
+                header.style.position = 'sticky';
+                header.style.top = '0';
+                header.style.zIndex = '10';
+                header.style.backgroundColor = 'white';
+                header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                isSticky = true;
+            } else if (!shouldBeSticky && isSticky) {
+                header.style.position = '';
+                header.style.top = '';
+                header.style.zIndex = '';
+                header.style.backgroundColor = '';
+                header.style.boxShadow = '';
+                isSticky = false;
+            }
         }
+        
+        window.addEventListener('scroll', checkSticky);
     });
 }
 
@@ -681,44 +823,49 @@ window.addEventListener('load', function() {
     
     // レスポンシブ対応でのテーブル初期化
     handleTableResponsive();
+    
+    // レーダーチャートの再描画（リサイズ対応）
+    window.addEventListener('resize', throttle(drawRadarChart, 250));
 });
 
 /**
  * テーブルのレスポンシブ対応処理
  */
 function handleTableResponsive() {
-    const table = document.querySelector('.service-comparison-table');
-    const container = document.querySelector('.comparison-table-container');
+    const tables = document.querySelectorAll('.service-comparison-table, .competitive-table');
     
-    if (!table || !container) return;
-    
-    function checkTableOverflow() {
-        const tableWidth = table.scrollWidth;
-        const containerWidth = container.clientWidth;
+    tables.forEach(table => {
+        const container = table.closest('.comparison-table-container, .competitive-comparison-table');
+        if (!container) return;
         
-        if (tableWidth > containerWidth) {
-            container.classList.add('table-overflow');
-            // スクロール可能であることを示すインジケータを追加
-            if (!container.querySelector('.scroll-indicator')) {
-                const indicator = document.createElement('div');
-                indicator.className = 'scroll-indicator';
-                indicator.textContent = '← → スクロールできます';
-                container.appendChild(indicator);
-            }
-        } else {
-            container.classList.remove('table-overflow');
-            const indicator = container.querySelector('.scroll-indicator');
-            if (indicator) {
-                indicator.remove();
+        function checkTableOverflow() {
+            const tableWidth = table.scrollWidth;
+            const containerWidth = container.clientWidth;
+            
+            if (tableWidth > containerWidth) {
+                container.classList.add('table-overflow');
+                // スクロール可能であることを示すインジケータを追加
+                if (!container.querySelector('.scroll-indicator')) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'scroll-indicator';
+                    indicator.textContent = '← → スクロールできます';
+                    container.appendChild(indicator);
+                }
+            } else {
+                container.classList.remove('table-overflow');
+                const indicator = container.querySelector('.scroll-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
             }
         }
-    }
-    
-    // 初回チェック
-    checkTableOverflow();
-    
-    // リサイズ時にチェック
-    window.addEventListener('resize', throttle(checkTableOverflow, 250));
+        
+        // 初回チェック
+        checkTableOverflow();
+        
+        // リサイズ時にチェック
+        window.addEventListener('resize', throttle(checkTableOverflow, 250));
+    });
 }
 
 /* ========================================
@@ -754,7 +901,7 @@ if (!('IntersectionObserver' in window)) {
     
     // スクロールベースの簡易実装
     function fallbackScrollAnimation() {
-        const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card, .stat-card, .concern-item, .strategy-card');
+        const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card, .stat-card, .concern-item, .strategy-card, .metric-card');
         const windowHeight = window.innerHeight;
         
         animationTargets.forEach(target => {
@@ -816,10 +963,10 @@ function enhanceKeyboardNavigation() {
     }
     
     // 比較表のキーボードナビゲーション
-    const table = document.querySelector('.service-comparison-table');
-    if (table) {
+    const tables = document.querySelectorAll('.service-comparison-table, .competitive-table');
+    tables.forEach(table => {
         setupTableKeyboardNavigation(table);
-    }
+    });
 }
 
 /**

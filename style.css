@@ -282,7 +282,306 @@ html {
 }
 
 /* ========================================
-   サービス比較表（新規追加）
+   競合比較表（新規追加）
+======================================== */
+.competitive-comparison-table {
+    overflow-x: auto;
+    margin: var(--space-xl) 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.competitive-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    min-width: 800px;
+}
+
+.competitive-table th,
+.competitive-table td {
+    padding: var(--space-md);
+    text-align: center;
+    border-bottom: 1px solid var(--neutral-100);
+    vertical-align: middle;
+}
+
+.compare-header {
+    background: var(--primary-dark);
+    color: var(--white);
+    font-weight: 600;
+    font-size: var(--font-body-large);
+    width: 20%;
+}
+
+.compare-competitor {
+    background: var(--neutral-50);
+    color: var(--text-primary);
+    font-weight: 600;
+    width: 20%;
+}
+
+.compare-our-service {
+    background: var(--white);
+    color: var(--primary-dark);
+    font-weight: 700;
+    width: 20%;
+    position: relative;
+    border: 3px solid var(--primary);
+    box-shadow: inset 0 0 0 2px var(--primary-light);
+}
+
+.compare-feature {
+    background: var(--primary-light);
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-align: left;
+    padding-left: var(--space-lg);
+}
+
+.feature-highlight {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 700;
+    border: 2px solid var(--primary);
+}
+
+.price-high {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.price-medium {
+    color: var(--primary-dark);
+    font-weight: 700;
+    background: var(--primary-light);
+}
+
+.price-low {
+    color: var(--success);
+    font-weight: 600;
+}
+
+/* ========================================
+   ポジショニングマップ（新規追加）
+======================================== */
+.positioning-container {
+    background: var(--primary-light);
+    border-radius: 15px;
+    padding: var(--space-xxl);
+    margin: var(--space-xl) 0;
+}
+
+.positioning-map {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: var(--white);
+    border: 2px solid var(--neutral-100);
+    border-radius: 12px;
+    margin: var(--space-lg) 0;
+}
+
+.axis {
+    position: absolute;
+    background: var(--neutral-100);
+}
+
+.axis-x {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+}
+
+.axis-y {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+}
+
+.axis-label {
+    position: absolute;
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-size: var(--font-body-small);
+}
+
+.label-x-left {
+    left: 10px;
+    top: 45%;
+}
+
+.label-x-right {
+    right: 10px;
+    top: 45%;
+}
+
+.label-y-top {
+    top: 10px;
+    left: 52%;
+}
+
+.label-y-bottom {
+    bottom: 10px;
+    left: 52%;
+}
+
+.service-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.service-label {
+    position: absolute;
+    transform: translate(-50%, -120%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 8px;
+    font-size: var(--font-caption);
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--neutral-100);
+}
+
+.dot-sns-dotcom {
+    background: var(--success);
+    left: 20%;
+    top: 20%;
+}
+
+.dot-jisou {
+    background: var(--danger);
+    left: 60%;
+    top: 80%;
+}
+
+.dot-hottolink {
+    background: #9b59b6;
+    left: 75%;
+    top: 85%;
+}
+
+.dot-our-service {
+    background: var(--primary);
+    left: 80%;
+    top: 25%;
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+}
+
+.our-service-label {
+    color: var(--primary-dark);
+    font-weight: 700;
+    background: var(--primary-light);
+    border: 2px solid var(--primary);
+}
+
+/* ========================================
+   レーダーチャート（新規追加）
+======================================== */
+.radar-container {
+    background: var(--white);
+    border-radius: 15px;
+    padding: var(--space-xxl);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.radar-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: var(--space-xl) 0;
+    position: relative;
+}
+
+.radar-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.our-legend {
+    background: var(--primary);
+}
+
+.sns-legend {
+    background: var(--success);
+}
+
+.jisou-legend {
+    background: var(--danger);
+}
+
+.hottolink-legend {
+    background: #9b59b6;
+}
+
+.legend-text {
+    font-size: var(--font-body-small);
+    font-weight: 500;
+}
+
+.our-legend-text {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.radar-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-xxl);
+}
+
+.metric-card {
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--primary-light);
+    border-radius: 12px;
+    border: 2px solid var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+}
+
+.metric-card h4 {
+    color: var(--primary-dark);
+    margin: 0 0 var(--space-sm) 0;
+    font-size: var(--font-h4);
+}
+
+.metric-card p {
+    margin: 0;
+    font-size: var(--font-body-small);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ========================================
+   サービス比較表（既存）
 ======================================== */
 .comparison-table-container {
     overflow-x: auto;
@@ -1169,7 +1468,7 @@ html {
 }
 
 /* ========================================
-   フローティング目次
+   フローティング目次（修正版）
 ======================================== */
 .floating-toc {
     position: fixed;
@@ -1186,17 +1485,18 @@ html {
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(78, 205, 196, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     transition: all 0.3s ease;
 }
 
 .floating-toc-toggle:hover {
     background: var(--primary-dark);
     transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
 }
 
 .floating-toc-menu {
@@ -1206,13 +1506,14 @@ html {
     background: var(--white);
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    min-width: 280px;
+    min-width: 320px;
     max-height: 400px;
     overflow-y: auto;
     transform: translateY(20px) scale(0.9);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    border: 1px solid var(--neutral-100);
 }
 
 .floating-toc-menu.active {
@@ -1225,8 +1526,10 @@ html {
     padding: var(--space-md);
     border-bottom: 1px solid var(--neutral-100);
     font-weight: 600;
-    color: var(--text-primary);
-    font-size: var(--font-body-small);
+    color: var(--primary-dark);
+    font-size: var(--font-body);
+    background: var(--primary-light);
+    border-radius: 12px 12px 0 0;
 }
 
 .floating-toc-list {
@@ -1250,11 +1553,13 @@ html {
     color: var(--text-secondary);
     font-size: var(--font-body-small);
     transition: all 0.3s ease;
+    line-height: 1.4;
 }
 
 .floating-toc-link:hover {
     background: var(--primary-light);
     color: var(--primary-dark);
+    padding-left: calc(var(--space-md) + 8px);
 }
 
 /* ========================================
@@ -1384,6 +1689,59 @@ html {
         margin: 32px -16px;
         padding: 0 16px;
     }
+    
+    /* 競合比較表のレスポンシブ */
+    .competitive-comparison-table {
+        margin: var(--space-lg) -16px;
+        padding: 0 16px;
+    }
+    
+    .competitive-table th,
+    .competitive-table td {
+        padding: var(--space-sm) var(--space-xs);
+        font-size: var(--font-body-small);
+    }
+    
+    .compare-feature {
+        padding-left: var(--space-sm);
+    }
+    
+    /* ポジショニングマップのレスポンシブ */
+    .positioning-map {
+        height: 400px;
+    }
+    
+    .positioning-container {
+        padding: var(--space-lg);
+    }
+    
+    .axis-label {
+        font-size: var(--font-caption);
+    }
+    
+    .service-label {
+        font-size: 0.7rem;
+        padding: var(--space-xs) var(--space-sm);
+    }
+    
+    /* レーダーチャートのレスポンシブ */
+    .radar-chart-wrapper canvas {
+        width: 350px !important;
+        height: 350px !important;
+    }
+    
+    .radar-metrics {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .metric-card {
+        padding: var(--space-md);
+    }
+    
+    .radar-legend {
+        gap: var(--space-sm);
+    }
 }
 
 @media (max-width: 480px) {
@@ -1426,5 +1784,50 @@ html {
     
     .plan-column {
         width: 27.5%;
+    }
+    
+    /* 競合比較表の極小画面対応 */
+    .competitive-table th,
+    .competitive-table td {
+        padding: var(--space-xs) 4px;
+        font-size: 0.75rem;
+    }
+    
+    .compare-header,
+    .compare-competitor,
+    .compare-our-service {
+        width: auto;
+        min-width: 70px;
+    }
+    
+    .compare-feature {
+        width: auto;
+        min-width: 80px;
+        padding-left: var(--space-xs);
+    }
+    
+    /* ポジショニングマップの極小画面対応 */
+    .positioning-map {
+        height: 300px;
+    }
+    
+    .service-label {
+        font-size: 0.65rem;
+        padding: 2px var(--space-xs);
+    }
+    
+    .dot-our-service {
+        width: 12px;
+        height: 12px;
+    }
+    
+    /* レーダーチャートの極小画面対応 */
+    .radar-chart-wrapper canvas {
+        width: 280px !important;
+        height: 280px !important;
+    }
+    
+    .radar-container {
+        padding: var(--space-lg);
     }
 }
