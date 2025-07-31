@@ -1,4 +1,38 @@
 /* ========================================
+   業種別タブ機能
+======================================== */
+
+/**
+ * 業種タブを切り替える
+ * @param {string} industryId - 表示する業種のID
+ */
+function showIndustry(industryId) {
+    // 全てのタブとコンテンツから active クラスを削除
+    const tabs = document.querySelectorAll('.industry-tab');
+    const contents = document.querySelectorAll('.industry-content');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    contents.forEach(content => content.classList.remove('active'));
+    
+    // 選択されたタブとコンテンツに active クラスを追加
+    const selectedTab = document.querySelector(`.industry-tab[onclick*="${industryId}"]`);
+    const selectedContent = document.getElementById(industryId);
+    
+    if (selectedTab && selectedContent) {
+        selectedTab.classList.add('active');
+        selectedContent.classList.add('active');
+        
+        // スムーススクロール効果のために少し遅延
+        setTimeout(() => {
+            selectedContent.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }, 100);
+    }
+}
+
+/* ========================================
    フローティング目次機能
 ======================================== */
 
@@ -32,7 +66,42 @@ document.addEventListener('DOMContentLoaded', function() {
     // 目次リンクのクリック時処理
     setupTocLinkClicks();
     
+    // 業種タブの初期化
+    initializeIndustryTabs();
+    
 });
+
+/**
+ * 業種タブの初期化処理
+ */
+function initializeIndustryTabs() {
+    // 最初のタブ（歯科医院）をアクティブに設定
+    const firstTab = document.querySelector('.industry-tab');
+    const firstContent = document.querySelector('.industry-content');
+    
+    if (firstTab && firstContent) {
+        firstTab.classList.add('active');
+        firstContent.classList.add('active');
+    }
+    
+    // キーボードナビゲーション対応
+    const tabs = document.querySelectorAll('.industry-tab');
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' && index > 0) {
+                tabs[index - 1].focus();
+            } else if (e.key === 'ArrowRight' && index < tabs.length - 1) {
+                tabs[index + 1].focus();
+            } else if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                tab.click();
+            }
+        });
+        
+        // タブにフォーカス可能にする
+        tab.setAttribute('tabindex', '0');
+    });
+}
 
 /**
  * フローティング目次のクリック外での閉じる処理を設定
@@ -163,7 +232,7 @@ function setupScrollAnimations() {
     }, observerOptions);
     
     // アニメーション対象の要素を監視対象に追加
-    const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card');
+    const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card, .stat-card, .concern-item, .strategy-card');
     
     animationTargets.forEach(target => {
         // 初期状態を設定
@@ -177,6 +246,38 @@ function setupScrollAnimations() {
 
 // ページ読み込み完了後にアニメーションを設定
 window.addEventListener('load', setupScrollAnimations);
+
+/* ========================================
+   業種別コンテンツのアニメーション
+======================================== */
+
+/**
+ * 業種コンテンツ切り替え時のアニメーション効果
+ */
+function animateIndustryContent(contentElement) {
+    if (!contentElement) return;
+    
+    // 統計カードのスタガードアニメーション
+    const statCards = contentElement.querySelectorAll('.stat-card');
+    statCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('animate-fade-in');
+    });
+    
+    // 不安要素のスタガードアニメーション
+    const concernItems = contentElement.querySelectorAll('.concern-item');
+    concernItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.15}s`;
+        item.classList.add('animate-slide-in');
+    });
+    
+    // 戦略カードのスタガードアニメーション
+    const strategyCards = contentElement.querySelectorAll('.strategy-card');
+    strategyCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.2}s`;
+        card.classList.add('animate-zoom-in');
+    });
+}
 
 /* ========================================
    ユーティリティ関数
@@ -207,6 +308,18 @@ function scrollToTop() {
         top: 0,
         behavior: 'smooth'
     });
+}
+
+/**
+ * 業種タブのキーボードナビゲーション
+ * @param {Event} event - キーボードイベント
+ * @param {string} industryId - 業種ID
+ */
+function handleTabKeydown(event, industryId) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        showIndustry(industryId);
+    }
 }
 
 /* ========================================
@@ -266,7 +379,7 @@ if (!('IntersectionObserver' in window)) {
     
     // スクロールベースの簡易実装
     function fallbackScrollAnimation() {
-        const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card');
+        const animationTargets = document.querySelectorAll('.card, .achievement-card, .industry-card, .stat-card, .concern-item, .strategy-card');
         const windowHeight = window.innerHeight;
         
         animationTargets.forEach(target => {
@@ -282,3 +395,51 @@ if (!('IntersectionObserver' in window)) {
     window.addEventListener('scroll', throttle(fallbackScrollAnimation, 16));
     window.addEventListener('load', fallbackScrollAnimation);
 }
+
+/* ========================================
+   アクセシビリティ向上
+======================================== */
+
+/**
+ * キーボードナビゲーションの改善
+ */
+function enhanceKeyboardNavigation() {
+    // フォーカス可能な要素を管理
+    const focusableElements = document.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    // フォーカストラップの実装（モーダル用）
+    function trapFocus(container) {
+        const focusableEls = container.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstFocusableEl = focusableEls[0];
+        const lastFocusableEl = focusableEls[focusableEls.length - 1];
+        
+        container.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusableEl) {
+                        lastFocusableEl.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusableEl) {
+                        firstFocusableEl.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
+    }
+    
+    // フローティング目次のフォーカストラップ
+    const floatingTocMenu = document.getElementById('floatingTocMenu');
+    if (floatingTocMenu) {
+        trapFocus(floatingTocMenu);
+    }
+}
+
+// ページ読み込み後にアクセシビリティ機能を初期化
+document.addEventListener('DOMContentLoaded', enhanceKeyboardNavigation);
