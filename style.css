@@ -1499,6 +1499,33 @@ html {
     box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
 }
 
+.floating-toc-toggle[aria-expanded="true"] {
+    background: var(--primary-dark);
+}
+
+.floating-toc-menu {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 320px;
+    max-height: 400px;
+    overflow-y: auto;
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--neutral-100);
+}
+
+.floating-toc-menu.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
 .floating-toc-menu {
     position: absolute;
     bottom: 70px;
