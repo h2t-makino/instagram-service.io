@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 業種タブの初期化
     initializeIndustryTabs();
     
+    // 比較表の初期化
+    initializeComparisonTable();
+    
 });
 
 /**
@@ -100,6 +103,98 @@ function initializeIndustryTabs() {
         
         // タブにフォーカス可能にする
         tab.setAttribute('tabindex', '0');
+    });
+}
+
+/**
+ * 比較表の初期化処理
+ */
+function initializeComparisonTable() {
+    const table = document.querySelector('.service-comparison-table');
+    if (!table) return;
+    
+    // テーブルのレスポンシブ対応
+    setupTableResponsive();
+    
+    // テーブル行のアニメーション
+    setupTableAnimation();
+    
+    // テーブルのアクセシビリティ向上
+    setupTableAccessibility();
+}
+
+/**
+ * テーブルのレスポンシブ対応
+ */
+function setupTableResponsive() {
+    const table = document.querySelector('.service-comparison-table');
+    const container = document.querySelector('.comparison-table-container');
+    
+    if (!table || !container) return;
+    
+    // 横スクロール可能であることを示すスタイルを追加
+    container.setAttribute('role', 'region');
+    container.setAttribute('aria-label', 'サービス内容比較表');
+    container.setAttribute('tabindex', '0');
+}
+
+/**
+ * テーブルのアニメーション設定
+ */
+function setupTableAnimation() {
+    const rows = document.querySelectorAll('.service-comparison-table tbody tr');
+    
+    // Intersection Observer で行のフェードインアニメーション
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -20px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }, index * 50); // スタガードアニメーション
+            }
+        });
+    }, observerOptions);
+    
+    rows.forEach((row, index) => {
+        // カテゴリ行とサブカテゴリ行は除外
+        if (!row.classList.contains('category-row') && !row.classList.contains('subcategory-row')) {
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(-20px)';
+            row.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(row);
+        }
+    });
+}
+
+/**
+ * テーブルのアクセシビリティ向上
+ */
+function setupTableAccessibility() {
+    const table = document.querySelector('.service-comparison-table');
+    if (!table) return;
+    
+    // ヘッダーセルにscopeを追加
+    const headerCells = table.querySelectorAll('thead th');
+    headerCells.forEach((cell, index) => {
+        cell.setAttribute('scope', 'col');
+    });
+    
+    // カテゴリ行のセルにscopeを追加
+    const categoryRows = table.querySelectorAll('.category-row td');
+    categoryRows.forEach(cell => {
+        cell.setAttribute('scope', 'colgroup');
+    });
+    
+    // サブカテゴリ行のセルにscopeを追加
+    const subcategoryRows = table.querySelectorAll('.subcategory-row td');
+    subcategoryRows.forEach(cell => {
+        cell.setAttribute('scope', 'colgroup');
     });
 }
 
@@ -280,6 +375,107 @@ function animateIndustryContent(contentElement) {
 }
 
 /* ========================================
+   比較表機能
+======================================== */
+
+/**
+ * 比較表の行ハイライト機能
+ */
+function setupTableRowHighlight() {
+    const tableRows = document.querySelectorAll('.service-comparison-table tbody tr');
+    
+    tableRows.forEach(row => {
+        // カテゴリ行とサブカテゴリ行は除外
+        if (!row.classList.contains('category-row') && !row.classList.contains('subcategory-row')) {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(78, 205, 196, 0.05)';
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '';
+            });
+        }
+    });
+}
+
+/**
+ * 比較表のスティッキーヘッダー機能
+ */
+function setupStickyTableHeader() {
+    const table = document.querySelector('.service-comparison-table');
+    const header = document.querySelector('.service-comparison-table thead');
+    
+    if (!table || !header) return;
+    
+    let isSticky = false;
+    
+    window.addEventListener('scroll', function() {
+        const tableRect = table.getBoundingClientRect();
+        const shouldBeSticky = tableRect.top <= 0 && tableRect.bottom > 0;
+        
+        if (shouldBeSticky && !isSticky) {
+            header.style.position = 'sticky';
+            header.style.top = '0';
+            header.style.zIndex = '10';
+            header.style.backgroundColor = 'white';
+            header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            isSticky = true;
+        } else if (!shouldBeSticky && isSticky) {
+            header.style.position = '';
+            header.style.top = '';
+            header.style.zIndex = '';
+            header.style.backgroundColor = '';
+            header.style.boxShadow = '';
+            isSticky = false;
+        }
+    });
+}
+
+/**
+ * 比較表のフィルタリング機能
+ */
+function setupTableFiltering() {
+    const filterButtons = document.querySelectorAll('.table-filter-btn');
+    const tableRows = document.querySelectorAll('.service-comparison-table tbody tr');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+            
+            // アクティブボタンの切り替え
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 行の表示/非表示
+            tableRows.forEach(row => {
+                if (filter === 'all') {
+                    row.style.display = '';
+                } else if (filter === 'standard-only') {
+                    // スタンダードプランで提供されるサービスのみ表示
+                    const standardCell = row.querySelector('.feature-check');
+                    if (standardCell && standardCell.textContent.includes('✔︎')) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                } else if (filter === 'premium-only') {
+                    // フルパッケージプランのみで提供されるサービスを表示
+                    const standardCell = row.cells[1];
+                    const premiumCell = row.cells[2];
+                    if (standardCell && premiumCell && 
+                        standardCell.textContent.includes('×') && 
+                        premiumCell.textContent.includes('✔︎')) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+}
+
+/* ========================================
    ユーティリティ関数
 ======================================== */
 
@@ -322,6 +518,24 @@ function handleTabKeydown(event, industryId) {
     }
 }
 
+/**
+ * 比較表の行をハイライト
+ * @param {HTMLElement} row - ハイライトする行
+ */
+function highlightTableRow(row) {
+    // 既存のハイライトを削除
+    const highlightedRows = document.querySelectorAll('.table-row-highlighted');
+    highlightedRows.forEach(r => r.classList.remove('table-row-highlighted'));
+    
+    // 新しい行をハイライト
+    row.classList.add('table-row-highlighted');
+    
+    // 一定時間後にハイライトを削除
+    setTimeout(() => {
+        row.classList.remove('table-row-highlighted');
+    }, 3000);
+}
+
 /* ========================================
    パフォーマンス最適化
 ======================================== */
@@ -345,6 +559,57 @@ function throttle(func, wait) {
 const throttledHighlight = throttle(highlightCurrentSection, 16);
 window.removeEventListener('scroll', highlightCurrentSection);
 window.addEventListener('scroll', throttledHighlight);
+
+/* ========================================
+   比較表の追加初期化
+======================================== */
+window.addEventListener('load', function() {
+    // 比較表関連の機能を初期化
+    setupTableRowHighlight();
+    setupStickyTableHeader();
+    setupTableFiltering();
+    
+    // レスポンシブ対応でのテーブル初期化
+    handleTableResponsive();
+});
+
+/**
+ * テーブルのレスポンシブ対応処理
+ */
+function handleTableResponsive() {
+    const table = document.querySelector('.service-comparison-table');
+    const container = document.querySelector('.comparison-table-container');
+    
+    if (!table || !container) return;
+    
+    function checkTableOverflow() {
+        const tableWidth = table.scrollWidth;
+        const containerWidth = container.clientWidth;
+        
+        if (tableWidth > containerWidth) {
+            container.classList.add('table-overflow');
+            // スクロール可能であることを示すインジケータを追加
+            if (!container.querySelector('.scroll-indicator')) {
+                const indicator = document.createElement('div');
+                indicator.className = 'scroll-indicator';
+                indicator.textContent = '← → スクロールできます';
+                container.appendChild(indicator);
+            }
+        } else {
+            container.classList.remove('table-overflow');
+            const indicator = container.querySelector('.scroll-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+    }
+    
+    // 初回チェック
+    checkTableOverflow();
+    
+    // リサイズ時にチェック
+    window.addEventListener('resize', throttle(checkTableOverflow, 250));
+}
 
 /* ========================================
    エラーハンドリング
@@ -438,6 +703,67 @@ function enhanceKeyboardNavigation() {
     const floatingTocMenu = document.getElementById('floatingTocMenu');
     if (floatingTocMenu) {
         trapFocus(floatingTocMenu);
+    }
+    
+    // 比較表のキーボードナビゲーション
+    const table = document.querySelector('.service-comparison-table');
+    if (table) {
+        setupTableKeyboardNavigation(table);
+    }
+}
+
+/**
+ * 比較表のキーボードナビゲーション設定
+ */
+function setupTableKeyboardNavigation(table) {
+    const cells = table.querySelectorAll('td, th');
+    let currentCellIndex = 0;
+    
+    // セルにtabindexを設定
+    cells.forEach((cell, index) => {
+        cell.setAttribute('tabindex', index === 0 ? '0' : '-1');
+        cell.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowRight':
+                    e.preventDefault();
+                    navigateTable(1, 0);
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    navigateTable(-1, 0);
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    navigateTable(0, 1);
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    navigateTable(0, -1);
+                    break;
+            }
+        });
+    });
+    
+    function navigateTable(colDelta, rowDelta) {
+        const currentCell = document.activeElement;
+        const currentRow = currentCell.parentElement;
+        const currentColIndex = Array.from(currentRow.children).indexOf(currentCell);
+        const currentRowIndex = Array.from(currentRow.parentElement.children).indexOf(currentRow);
+        
+        const newRowIndex = currentRowIndex + rowDelta;
+        const newColIndex = currentColIndex + colDelta;
+        
+        const rows = table.querySelectorAll('tr');
+        if (newRowIndex >= 0 && newRowIndex < rows.length) {
+            const newRow = rows[newRowIndex];
+            const newCells = newRow.children;
+            if (newColIndex >= 0 && newColIndex < newCells.length) {
+                const newCell = newCells[newColIndex];
+                currentCell.setAttribute('tabindex', '-1');
+                newCell.setAttribute('tabindex', '0');
+                newCell.focus();
+            }
+        }
     }
 }
 

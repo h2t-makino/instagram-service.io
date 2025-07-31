@@ -282,6 +282,177 @@ html {
 }
 
 /* ========================================
+   サービス比較表（新規追加）
+======================================== */
+.comparison-table-container {
+    overflow-x: auto;
+    margin: 48px 0;
+    position: relative;
+}
+
+.service-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    min-width: 800px;
+}
+
+.service-comparison-table th,
+.service-comparison-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #E9ECEF;
+    vertical-align: top;
+}
+
+.feature-column {
+    width: 50%;
+    background: #F8F9FA;
+    font-weight: 600;
+    color: #2C3E50;
+}
+
+.plan-column {
+    width: 25%;
+    text-align: center;
+}
+
+.standard-header {
+    background: #E8F4F8;
+    border-left: 3px solid #4ECDC4;
+}
+
+.premium-header {
+    background: #F8F9FA;
+}
+
+.plan-header-content h3 {
+    font-size: 1.1rem;
+    margin: 4px 0;
+    color: #2C3E50;
+}
+
+.popular-indicator {
+    background: #4ECDC4;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.campaign-badge {
+    background: #F39C12;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+}
+
+.category-row {
+    background: #2B7A78;
+}
+
+.category-header {
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.subcategory-row {
+    background: #4ECDC4;
+}
+
+.subcategory-header {
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
+.feature-name {
+    color: #2C3E50;
+    font-weight: 500;
+}
+
+.feature-name small {
+    display: block;
+    color: #7F8C8D;
+    font-weight: 400;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.feature-check {
+    text-align: center;
+    color: #27AE60;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.feature-cross {
+    text-align: center;
+    color: #E74C3C;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.highlight-row {
+    background: #E8F4F8;
+}
+
+.feature-highlight {
+    text-align: center;
+    color: #2B7A78;
+    font-weight: 700;
+}
+
+/* テーブルのスクロール表示改善 */
+.comparison-table-container.table-overflow {
+    position: relative;
+}
+
+.comparison-table-container.table-overflow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    animation: fadeIn 0.5s ease;
+}
+
+/* テーブル行のハイライト効果 */
+.table-row-highlighted {
+    background-color: rgba(78, 205, 196, 0.1) !important;
+    animation: highlight-pulse 1s ease-in-out;
+}
+
+@keyframes highlight-pulse {
+    0% { background-color: rgba(78, 205, 196, 0.3); }
+    100% { background-color: rgba(78, 205, 196, 0.1); }
+}
+
+/* ========================================
    ハイライト表示
 ======================================== */
 .problem-highlight {
@@ -1134,6 +1305,21 @@ html {
     .concern-rank {
         align-self: center;
     }
+    
+    /* サービス比較表のレスポンシブ */
+    .service-comparison-table {
+        font-size: 0.9rem;
+    }
+    
+    .service-comparison-table th,
+    .service-comparison-table td {
+        padding: 12px 8px;
+    }
+    
+    .comparison-table-container {
+        margin: 32px -16px;
+        padding: 0 16px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1155,5 +1341,26 @@ html {
     
     .strategy-card {
         padding: var(--space-lg);
+    }
+    
+    .feature-name small {
+        font-size: 0.8rem;
+    }
+    
+    .service-comparison-table {
+        font-size: 0.8rem;
+    }
+    
+    .service-comparison-table th,
+    .service-comparison-table td {
+        padding: 8px 6px;
+    }
+    
+    .feature-column {
+        width: 45%;
+    }
+    
+    .plan-column {
+        width: 27.5%;
     }
 }
