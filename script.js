@@ -121,6 +121,116 @@ function initializeComparisonTable() {
     
     // テーブルのアクセシビリティ向上
     setupTableAccessibility();
+    
+    // カテゴリ開閉機能の初期化
+    initializeCategoryToggle();
+}
+
+/**
+ * カテゴリ開閉機能の初期化
+ */
+function initializeCategoryToggle() {
+    // デフォルトで最初のカテゴリのみ展開
+    const firstCategory = 'category-1';
+    expandCategory(firstCategory);
+    
+    // 他のカテゴリは閉じる
+    for (let i = 2; i <= 7; i++) {
+        collapseCategory(`category-${i}`);
+    }
+}
+
+/**
+ * カテゴリの開閉を切り替える
+ * @param {string} categoryId - カテゴリID
+ */
+function toggleCategory(categoryId) {
+    const categoryRows = document.querySelectorAll(`.${categoryId}-content`);
+    const categoryHeader = document.querySelector(`[data-category="${categoryId}"]`);
+    const toggle = categoryHeader.querySelector('.category-toggle');
+    
+    if (!categoryRows.length || !toggle) return;
+    
+    const isExpanded = categoryRows[0].style.display !== 'none';
+    
+    if (isExpanded) {
+        collapseCategory(categoryId);
+    } else {
+        expandCategory(categoryId);
+    }
+}
+
+/**
+ * カテゴリを展開する
+ * @param {string} categoryId - カテゴリID
+ */
+function expandCategory(categoryId) {
+    const categoryRows = document.querySelectorAll(`.${categoryId}-content`);
+    const categoryHeader = document.querySelector(`[data-category="${categoryId}"]`);
+    const toggle = categoryHeader?.querySelector('.category-toggle');
+    
+    categoryRows.forEach((row, index) => {
+        row.style.display = '';
+        // スタガードアニメーション
+        setTimeout(() => {
+            row.style.opacity = '1';
+            row.style.transform = 'translateY(0)';
+        }, index * 50);
+    });
+    
+    if (toggle) {
+        toggle.textContent = '▼';
+        toggle.style.transform = 'rotate(0deg)';
+    }
+    
+    if (categoryHeader) {
+        categoryHeader.setAttribute('aria-expanded', 'true');
+    }
+}
+
+/**
+ * カテゴリを閉じる
+ * @param {string} categoryId - カテゴリID
+ */
+function collapseCategory(categoryId) {
+    const categoryRows = document.querySelectorAll(`.${categoryId}-content`);
+    const categoryHeader = document.querySelector(`[data-category="${categoryId}"]`);
+    const toggle = categoryHeader?.querySelector('.category-toggle');
+    
+    categoryRows.forEach(row => {
+        row.style.opacity = '0';
+        row.style.transform = 'translateY(-10px)';
+        setTimeout(() => {
+            row.style.display = 'none';
+        }, 200);
+    });
+    
+    if (toggle) {
+        toggle.textContent = '▶';
+        toggle.style.transform = 'rotate(-90deg)';
+    }
+    
+    if (categoryHeader) {
+        categoryHeader.setAttribute('aria-expanded', 'false');
+    }
+}
+
+/**
+ * すべてのカテゴリを展開
+ */
+function expandAllCategories() {
+    for (let i = 1; i <= 7; i++) {
+        expandCategory(`category-${i}`);
+    }
+}
+
+/**
+ * すべてのカテゴリを閉じる
+ */
+function collapseAllCategories() {
+    for (let i = 1; i <= 7; i++) {
+        collapseCategory(`category-${i}`);
+    }
 }
 
 /**

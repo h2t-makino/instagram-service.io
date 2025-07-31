@@ -353,15 +353,50 @@ html {
     font-size: 0.7rem;
 }
 
+/* カテゴリ行の開閉機能 */
 .category-row {
     background: #2B7A78;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.category-row:hover {
+    background: #236B69;
 }
 
 .category-header {
     color: white;
     font-weight: 700;
     font-size: 1.1rem;
+    text-align: left;
+    position: relative;
+    padding-right: 40px;
+}
+
+.category-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    width: 20px;
     text-align: center;
+}
+
+/* カテゴリコンテンツの表示制御 */
+.category-1-content,
+.category-2-content,
+.category-3-content,
+.category-4-content,
+.category-5-content,
+.category-6-content,
+.category-7-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .subcategory-row {
@@ -410,6 +445,35 @@ html {
     text-align: center;
     color: #2B7A78;
     font-weight: 700;
+}
+
+/* テーブルコントロール */
+.table-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.table-control-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.table-control-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.table-control-btn:active {
+    transform: translateY(0);
 }
 
 /* テーブルのスクロール表示改善 */
