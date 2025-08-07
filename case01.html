@@ -3,1182 +3,1059 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>補聴器店Instagram運用完全戦略マニュアル</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>補聴器店Instagram運用代行提案書</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
-        body { font-family: 'Noto Sans JP', sans-serif; }
-        .chart-container { height: 400px; margin: 20px 0; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-shadow { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .section-spacing { margin-bottom: 3rem; }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        .header {
+            background: #1a365d;
+            color: white;
+            padding: 80px 0 60px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .header h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 700px;
+        }
+        
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin: 16px 0;
+            padding: 12px;
+            background: rgba(107, 114, 128, 0.05);
+            border: 1px solid rgba(107, 114, 128, 0.2);
+            border-radius: 4px;
+            line-height: 1.5;
+        }
+        
+        .disclaimer-inline {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+        
+        .section {
+            background: #ffffff;
+            margin: 40px 0;
+            padding: 48px 40px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #1a365d;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #1a365d;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 32px;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+        
+        .card {
+            background: #f8f9fa;
+            padding: 32px;
+            border: 1px solid #e5e7eb;
+            border-left: 4px solid #1a365d;
+        }
+        
+        .card-conservative {
+            border-left-color: #6b7280;
+            background: #f9fafb;
+        }
+        
+        .card-realistic {
+            border-left-color: #1a365d;
+            background: #f0f4f8;
+        }
+        
+        .card-optimistic {
+            border-left-color: #dc2626;
+            background: #fef2f2;
+        }
+        
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c2c2c;
+        }
+        
+        .card p, .card li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .card ul {
+            padding-left: 20px;
+        }
+        
+        .calculation-box {
+            background: #f0f4f8;
+            border: 1px solid #cbd5e0;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        
+        .calculation-title {
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .formula {
+            background: white;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            font-family: 'Courier New', monospace;
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 32px 0;
+            font-size: 0.9rem;
+        }
+        
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 16px 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        th {
+            background: #f3f4f6;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .chart-container {
+            height: 400px;
+            margin: 40px 0;
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+        }
+        
+        .highlight-box {
+            background: #f0f4f8;
+            border: 1px solid #1a365d;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .highlight-box h4 {
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 12px;
+        }
+        
+        .warning-box {
+            background: #fffbf0;
+            border: 1px solid #f59e0b;
+            border-left: 4px solid #f59e0b;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .success-box {
+            background: #f0f9f0;
+            border: 1px solid #10b981;
+            border-left: 4px solid #10b981;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .risk-notice-box {
+            background: #fef2f2;
+            border: 1px solid #dc2626;
+            border-left: 4px solid #dc2626;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .final-recommendation {
+            background: #1a365d;
+            color: white;
+            padding: 60px 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .final-recommendation h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        
+        .final-recommendation p {
+            font-size: 1.2rem;
+            margin: 24px 0;
+            opacity: 0.9;
+        }
+        
+        .recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin: 40px 0;
+        }
+        
+        .recommendation-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .recommendation-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .metric-label {
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-weight: 600;
+        }
+        
+        .roi-positive {
+            color: #10b981;
+            font-weight: 700;
+        }
+        
+        .roi-negative {
+            color: #dc2626;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 24px 20px;
+            }
+            
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>補聴器店Instagram運用代行提案書</h1>
+            <h2>統計的根拠に基づく効果予測シミュレーション</h2>
+            <p>月額12万円での投資回収計画と詳細な計算根拠</p>
 
-    <!-- Header -->
-    <div class="gradient-bg text-white py-16">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-5xl font-black mb-4">補聴器店Instagram運用</h1>
-            <h2 class="text-4xl font-bold mb-6">完全戦略マニュアル</h2>
-            <p class="text-xl opacity-90 max-w-4xl mx-auto">論理的根拠に基づく市場データ分析・ユーザー心理解析・コンテンツ戦略・KPI設定・ROI最大化の完全ガイド</p>
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 py-12">
-
-        <!-- 目次 -->
-        <div class="bg-white rounded-xl card-shadow p-8 section-spacing">
-            <h2 class="text-3xl font-bold mb-6 flex items-center">
-                <i class="fas fa-list-ul mr-4 text-blue-600"></i>目次
-            </h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="font-bold text-lg mb-3">第1章: 市場分析・根拠データ</h3>
-                    <ul class="space-y-2 ml-4">
-                        <li>1.1 日本の補聴器市場現状</li>
-                        <li>1.2 店舗別市場ポテンシャル比較</li>
-                        <li>1.3 ターゲット顧客の詳細分析</li>
-                    </ul>
-                    
-                    <h3 class="font-bold text-lg mb-3 mt-6">第2章: ユーザー心理・行動分析</h3>
-                    <ul class="space-y-2 ml-4">
-                        <li>2.1 補聴器購入の決定要因</li>
-                        <li>2.2 心理的障壁とその対策</li>
-                        <li>2.3 高齢者のSNS利用実態</li>
+    <div class="container">
+        <!-- 統計的根拠データ -->
+        <div class="section">
+            <h2 class="section-title">統計的根拠データ</h2>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Instagram利用統計（日本市場）</h3>
+                    <ul>
+                        <li><strong>50代利用率：</strong>49.0%（ビデオリサーチ2024年調査）</li>
+                        <li><strong>60代利用率：</strong>36.8%（ビデオリサーチ2024年調査）</li>
+                        <li><strong>70代利用率：</strong>20%（推定値）</li>
+                        <li><strong>企業アカウント平均ER：</strong>1.67%（Socialinsider 2024）<br>
+                        <span style="font-size: 0.85rem; color: #6b7280;">※ER = エンゲージメント率（Engagement Rate）：投稿に対するいいね、コメント、保存などの反応率</span></li>
+                        <li><strong>来店影響率：</strong>46%（Instagram利用調査）</li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="font-bold text-lg mb-3">第3章: コンテンツ戦略設計</h3>
-                    <ul class="space-y-2 ml-4">
-                        <li>3.1 心理段階別コンテンツ設計</li>
-                        <li>3.2 具体的投稿テンプレート</li>
-                        <li>3.3 感情的つながりの構築法</li>
-                    </ul>
-                    
-                    <h3 class="font-bold text-lg mb-3 mt-6">第4章: 運用戦略・KPI管理</h3>
-                    <ul class="space-y-2 ml-4">
-                        <li>4.1 6ヶ月運用ロードマップ</li>
-                        <li>4.2 KPI設定と測定方法</li>
-                        <li>4.3 ROI最大化戦略</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- 第1章: 市場分析・根拠データ -->
-        <div class="bg-white rounded-xl card-shadow p-8 section-spacing">
-            <h2 class="text-3xl font-bold mb-8 flex items-center">
-                <i class="fas fa-chart-bar mr-4 text-green-600"></i>第1章: 市場分析・根拠データ
-            </h2>
-
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">1.1 日本の補聴器市場現状</h3>
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
-                    <div class="bg-blue-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">市場基礎データ（JapanTrak 2022）</h4>
-                        <ul class="space-y-2">
-                            <li><strong>全体難聴率:</strong> 10.0%</li>
-                            <li><strong>18歳以上難聴率:</strong> 11.6%</li>
-                            <li><strong>75歳以上難聴率:</strong> 34.4%</li>
-                            <li><strong>65-74歳難聴率:</strong> 14.9%</li>
-                            <li><strong>補聴器所有率:</strong> 15.2%（難聴者中）</li>
-                            <li><strong>顧客満足度:</strong> 50%（2022年改善）</li>
-                        </ul>
-                    </div>
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">市場規模推計</h4>
-                        <ul class="space-y-2">
-                            <li><strong>東京都推定難聴者:</strong> 133万人</li>
-                            <li><strong>関東圏推定難聴者:</strong> 411万人</li>
-                            <li><strong>年間補聴器出荷台数:</strong> 約60万台</li>
-                            <li><strong>平均購入価格:</strong> 13万円</li>
-                            <li><strong>市場成長率:</strong> 年6.5% CAGR予測</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <canvas id="marketSizeChart"></canvas>
-                </div>
-            </div>
-
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">1.2 店舗別市場ポテンシャル比較</h3>
                 
-                <div class="overflow-x-auto mb-6">
-                    <table class="w-full bg-white border-collapse border border-gray-300">
+                <div class="card">
+                    <h3>補聴器市場データ</h3>
+                    <ul>
+                        <li><strong>町田市推定難聴者：</strong>29,960人</li>
+                        <li><strong>補聴器成約率：</strong>48.5%（名古屋大学医学研究）</li>
+                        <li><strong>購入検討期間：</strong>平均6-12ヶ月</li>
+                        <li><strong>平均購入単価：</strong>30万円</li>
+                        <li><strong>競合店舗数：</strong>町田エリア5店舗以上</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- データソース詳細（開閉式） -->
+            <div style="margin-top: 32px;">
+                <button id="toggleSourcesBtn" style="background: #1a365d; color: white; padding: 12px 24px; border: none; cursor: pointer; font-weight: 600;">
+                    データソース詳細を表示 ▼
+                </button>
+                
+                <div id="sourcesTable" style="display: none; margin-top: 20px; background: #f8f9fa; padding: 24px; border: 1px solid #e5e7eb;">
+                    <h4 style="margin-bottom: 16px; color: #1a365d;">統計データ引用元</h4>
+                    <div class="disclaimer">
+                        以下の引用元データについては、各調査機関の調査方法、調査時期、サンプル数等により結果が変動する可能性があります。最新の情報については、直接各調査機関にご確認いただくことをお勧めいたします。
+                    </div>
+                    <table style="width: 100%; font-size: 0.9rem;">
                         <thead>
-                            <tr class="bg-gray-100">
-                                <th class="border border-gray-300 p-3 text-left">比較項目</th>
-                                <th class="border border-gray-300 p-3 text-center">町田店</th>
-                                <th class="border border-gray-300 p-3 text-center">保谷店</th>
-                                <th class="border border-gray-300 p-3 text-center">優劣評価</th>
+                            <tr>
+                                <th style="text-align: left; padding: 12px; background: #e5e7eb;">データ項目</th>
+                                <th style="text-align: left; padding: 12px; background: #e5e7eb;">調査機関</th>
+                                <th style="text-align: left; padding: 12px; background: #e5e7eb;">引用元URL</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="border border-gray-300 p-3 font-semibold">商圏人口</td>
-                                <td class="border border-gray-300 p-3 text-center">432,348人（町田市）</td>
-                                <td class="border border-gray-300 p-3 text-center">200,012人（西東京市）</td>
-                                <td class="border border-gray-300 p-3 text-center text-green-600">町田店◎</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="border border-gray-300 p-3 font-semibold">推定難聴者数</td>
-                                <td class="border border-gray-300 p-3 text-center">29,960人</td>
-                                <td class="border border-gray-300 p-3 text-center">10,670人</td>
-                                <td class="border border-gray-300 p-3 text-center text-green-600">町田店◎</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">50代・60代Instagram利用率</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">ビデオリサーチ</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://www.videor.co.jp/digestplus/article/consumer241001.html" style="color: #1a365d;">https://www.videor.co.jp/digestplus/article/consumer241001.html</a></td>
                             </tr>
                             <tr>
-                                <td class="border border-gray-300 p-3 font-semibold">駅からの距離</td>
-                                <td class="border border-gray-300 p-3 text-center">徒歩4分</td>
-                                <td class="border border-gray-300 p-3 text-center">徒歩7分</td>
-                                <td class="border border-gray-300 p-3 text-center text-green-600">町田店○</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="border border-gray-300 p-3 font-semibold">営業時間</td>
-                                <td class="border border-gray-300 p-3 text-center">月-土 9:30-17:30</td>
-                                <td class="border border-gray-300 p-3 text-center">月-金 10:00-17:00</td>
-                                <td class="border border-gray-300 p-3 text-center text-green-600">町田店○</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">企業アカウント平均ER</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">Socialinsider</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://www.socialinsider.io/social-media-benchmarks/instagram" style="color: #1a365d;">https://www.socialinsider.io/social-media-benchmarks/instagram</a></td>
                             </tr>
                             <tr>
-                                <td class="border border-gray-300 p-3 font-semibold">競合密度</td>
-                                <td class="border border-gray-300 p-3 text-center">高（5店舗以上）</td>
-                                <td class="border border-gray-300 p-3 text-center">中（3-4店舗）</td>
-                                <td class="border border-gray-300 p-3 text-center text-orange-600">保谷店△</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">Instagram来店影響率</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">複数調査機関</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://ecnomikata.com/ecnews/35589/" style="color: #1a365d;">https://ecnomikata.com/ecnews/35589/</a></td>
                             </tr>
-                            <tr class="bg-gray-50">
-                                <td class="border border-gray-300 p-3 font-semibold">交通アクセス</td>
-                                <td class="border border-gray-300 p-3 text-center">小田急線・JR横浜線</td>
-                                <td class="border border-gray-300 p-3 text-center">西武池袋線</td>
-                                <td class="border border-gray-300 p-3 text-center text-green-600">町田店○</td>
+                            <tr>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">補聴器成約率</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">名古屋大学医学研究科</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://www.jstage.jst.go.jp/article/audiology/55/5/55_417/_pdf/-char/ja" style="color: #1a365d;">https://www.jstage.jst.go.jp/article/audiology/55/5/55_417/_pdf/-char/ja</a></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px;">町田市人口統計</td>
+                                <td style="padding: 12px;">総務省統計局</td>
+                                <td style="padding: 12px;"><a href="https://www.city.machida.tokyo.jp/" style="color: #1a365d;">https://www.city.machida.tokyo.jp/</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="bg-blue-100 border-l-4 border-blue-500 p-4 mb-6">
-                    <h4 class="font-bold mb-2">結論: 町田店での運用を強く推奨</h4>
-                    <ul class="list-disc ml-6 space-y-1">
-                        <li>商圏人口が2.2倍、推定難聴者数が2.8倍の規模優位性</li>
-                        <li>立地・営業時間の利便性が高く、Instagram運用による集客効果を最大化できる</li>
-                        <li>競合は多いが、差別化されたコンテンツ戦略で優位性確保可能</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-2xl font-bold mb-4">1.3 ターゲット顧客の詳細分析</h3>
-                
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-purple-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">プライマリーターゲット</h4>
-                        <p class="mb-2"><strong>年齢層:</strong> 65-75歳</p>
-                        <p class="mb-2"><strong>難聴率:</strong> 14.9%</p>
-                        <p class="mb-2"><strong>Instagram利用率:</strong> 20-30%</p>
-                        <p class="mb-2"><strong>特徴:</strong> 家族の薦めで来店、価格意識高</p>
-                        <p><strong>推定人数:</strong> 町田店商圏内 約8,500人</p>
-                    </div>
-                    
-                    <div class="bg-orange-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">セカンダリーターゲット</h4>
-                        <p class="mb-2"><strong>年齢層:</strong> 50-64歳</p>
-                        <p class="mb-2"><strong>難聴率:</strong> 8.9%</p>
-                        <p class="mb-2"><strong>Instagram利用率:</strong> 49%</p>
-                        <p class="mb-2"><strong>特徴:</strong> 情報収集力高、品質重視</p>
-                        <p><strong>推定人数:</strong> 町田店商圏内 約12,000人</p>
-                    </div>
-                    
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">家族・支援者層</h4>
-                        <p class="mb-2"><strong>年齢層:</strong> 40-60歳</p>
-                        <p class="mb-2"><strong>役割:</strong> 情報収集・意思決定支援</p>
-                        <p class="mb-2"><strong>Instagram利用率:</strong> 60%+</p>
-                        <p class="mb-2"><strong>特徴:</strong> SNS情報感度高、口コミ重視</p>
-                        <p><strong>影響力:</strong> 購入決定の重要ファクター</p>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <!-- 第2章: ユーザー心理・行動分析 -->
-        <div class="bg-white rounded-xl card-shadow p-8 section-spacing">
-            <h2 class="text-3xl font-bold mb-8 flex items-center">
-                <i class="fas fa-brain mr-4 text-purple-600"></i>第2章: ユーザー心理・行動分析
-            </h2>
+        <!-- 計算根拠の詳細説明 -->
+        <div class="section">
+            <h2 class="section-title">計算根拠の詳細説明</h2>
+            
 
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">2.1 補聴器購入の決定要因</h3>
-                
-                <div class="chart-container mb-6">
-                    <canvas id="purchaseFactorsChart"></canvas>
+            
+            <div class="calculation-box">
+                <div class="calculation-title">フォロワー増加数の計算根拠</div>
+                <div class="formula">
+                    月間フォロワー増加 = 投稿数 × エンゲージメント率 × フォロワー転換率 × 業界補正係数
                 </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-bold text-lg mb-3">主要購入動機（JapanTrak 2018データ）</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <span class="bg-red-500 w-4 h-4 rounded mr-3"></span>
-                                <strong>聞こえ悪化:</strong> 65%（最重要要因）
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-blue-500 w-4 h-4 rounded mr-3"></span>
-                                <strong>耳鼻科医師の薦め:</strong> 39%
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-green-500 w-4 h-4 rounded mr-3"></span>
-                                <strong>かかりつけ医の薦め:</strong> 25%
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-yellow-500 w-4 h-4 rounded mr-3"></span>
-                                <strong>価格適正感:</strong> 23%
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-purple-500 w-4 h-4 rounded mr-3"></span>
-                                <strong>子供の薦め:</strong> 20%
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-bold text-lg mb-3">情報収集経路</h4>
-                        <ul class="space-y-3">
-                            <li class="flex justify-between">
-                                <span>補聴器販売店</span>
-                                <span class="font-bold">41%</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span>医師（耳鼻科・かかりつけ）</span>
-                                <span class="font-bold">32%</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span>インターネット検索</span>
-                                <span class="font-bold">24%</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span>メガネ店</span>
-                                <span class="font-bold">17%</span>
-                            </li>
-                        </ul>
-                    </div>
+                <p><strong>設定パラメータ：</strong></p>
+                <ul>
+                    <li>月間投稿数：12回（週3回の安定投稿）</li>
+                    <li>エンゲージメント率：1.2-2.5%（シナリオ別）</li>
+                    <li>フォロワー転換率：0.8-1.5%</li>
+                    <li>補聴器業界係数：0.7（専門性・高齢者ターゲット考慮）</li>
+                </ul>
+                <div class="disclaimer-inline">
+                    ※上記パラメータは統計データに基づく設定値です。
                 </div>
             </div>
 
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">2.2 心理的障壁とその対策</h3>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-red-600">心理的障壁（購入阻害要因）</h4>
-                        
-                        <div class="space-y-4">
-                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
-                                <h5 class="font-bold mb-2">1. わずらわしさ</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• 耳の中の異物感</li>
-                                    <li>• 装着時の違和感</li>
-                                    <li>• 日々の管理の手間</li>
-                                    <li>• 大きすぎる・重い</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
-                                <h5 class="font-bold mb-2">2. 期待値ギャップ</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• "元の聞こえには戻らない"</li>
-                                    <li>• 雑音が気になる</li>
-                                    <li>• 期待していた効果が得られない</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
-                                <h5 class="font-bold mb-2">3. 社会的スティグマ</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• 装用が恥ずかしい（19%）</li>
-                                    <li>• 難聴を公にしたくない（13%）</li>
-                                    <li>• 家族の反対（5%）</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
-                                <h5 class="font-bold mb-2">4. 経済的負担</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• 高額な購入費用</li>
-                                    <li>• 助成制度の認知不足（7%のみ）</li>
-                                    <li>• 投資対効果への疑問</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-green-600">Instagram対策アプローチ</h4>
-                        
-                        <div class="space-y-4">
-                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
-                                <h5 class="font-bold mb-2">わずらわしさ解決</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• 最新機種の小型・軽量化アピール</li>
-                                    <li>• 装着感の改善事例紹介</li>
-                                    <li>• 段階的慣れ方法の解説</li>
-                                    <li>• メンテナンスの簡単さ説明</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                                <h5 class="font-bold mb-2">期待値適正化</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• リアルな効果・限界の事前説明</li>
-                                    <li>• 体験談での生活改善具体例</li>
-                                    <li>• 段階的効果実感の解説</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400">
-                                <h5 class="font-bold mb-2">スティグマ解消</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• "見えない補聴器"の紹介</li>
-                                    <li>• 著名人の使用例シェア</li>
-                                    <li>• 前向きな生活変化の強調</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-400">
-                                <h5 class="font-bold mb-2">経済的不安軽減</h5>
-                                <ul class="text-sm space-y-1 ml-4">
-                                    <li>• 助成制度・保険適用情報提供</li>
-                                    <li>• 分割払い・レンタル制度案内</li>
-                                    <li>• 生活の質向上によるROI説明</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            <div class="calculation-box">
+                <div class="calculation-title">問い合わせ数の計算根拠</div>
+                <div class="formula">
+                    月間問い合わせ = フォロワー数 × 月間リーチ倍率 × 問い合わせ転換率
+                </div>
+                <p><strong>転換率の根拠：</strong></p>
+                <ul>
+                    <li>基礎転換率：Instagram来店影響率46% × 高齢者補正0.3 × 業界補正0.01 = 0.138%</li>
+                    <li>保守的：0.05%、現実的：0.10%、楽観的：0.15%</li>
+                    <li>月間リーチ倍率：10倍（業界標準値）</li>
+                </ul>
+                <div class="disclaimer-inline">
+                    ※転換率は業界標準値に基づく設定です。
                 </div>
             </div>
 
-            <div>
-                <h3 class="text-2xl font-bold mb-4">2.3 高齢者のSNS利用実態</h3>
-                
-                <div class="chart-container mb-6">
-                    <canvas id="snsUsageChart"></canvas>
+            <div class="calculation-box">
+                <div class="calculation-title">来店数の計算根拠</div>
+                <div class="formula">
+                    来店数 = 問い合わせ数 × 来店率 + 直接来店効果
                 </div>
-
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-blue-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">利用行動パターン</h4>
-                        <ul class="space-y-2 text-sm">
-                            <li><strong>投稿時間:</strong> 午前中（9-11時）が最多</li>
-                            <li><strong>閲覧時間:</strong> 夕方（17-19時）も多い</li>
-                            <li><strong>反応パターン:</strong> いいね>保存>コメント</li>
-                            <li><strong>情報信頼度:</strong> 専門性・権威性重視</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">コンテンツ傾向</h4>
-                        <ul class="space-y-2 text-sm">
-                            <li><strong>好反応:</strong> 体験談・実例</li>
-                            <li><strong>好反応:</strong> 分かりやすい解説</li>
-                            <li><strong>好反応:</strong> 家族・健康情報</li>
-                            <li><strong>避けるべき:</strong> トレンド追従</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-orange-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3">行動特性</h4>
-                        <ul class="space-y-2 text-sm">
-                            <li><strong>情報収集:</strong> 慎重・多角的</li>
-                            <li><strong>購買行動:</strong> 家族相談重視</li>
-                            <li><strong>信頼構築:</strong> 時間をかけて判断</li>
-                            <li><strong>口コミ重視:</strong> リアル体験談重要</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 第3章: コンテンツ戦略設計 -->
-        <div class="bg-white rounded-xl card-shadow p-8 section-spacing">
-            <h2 class="text-3xl font-bold mb-8 flex items-center">
-                <i class="fas fa-edit mr-4 text-orange-600"></i>第3章: コンテンツ戦略設計
-            </h2>
-
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">3.1 心理段階別コンテンツ設計</h3>
-                
-                <div class="grid md:grid-cols-3 gap-6 mb-6">
-                    <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400">
-                        <h4 class="font-bold text-lg mb-3 text-yellow-800">認知段階</h4>
-                        <p class="text-sm mb-3"><strong>目標:</strong> 難聴への気づき・関心喚起</p>
-                        <p class="text-sm mb-3"><strong>心理:</strong> 「もしかして私も？」</p>
-                        
-                        <h5 class="font-semibold mb-2">コンテンツタイプ:</h5>
-                        <ul class="text-sm space-y-1">
-                            <li>• 難聴セルフチェック</li>
-                            <li>• 日常の「困った」あるある</li>
-                            <li>• 家族の気づきサイン</li>
-                            <li>• 聞こえと健康の関係</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                        <h4 class="font-bold text-lg mb-3 text-blue-800">検討段階</h4>
-                        <p class="text-sm mb-3"><strong>目標:</strong> 解決手段として補聴器を認識</p>
-                        <p class="text-sm mb-3"><strong>心理:</strong> 「どうすれば解決できる？」</p>
-                        
-                        <h5 class="font-semibold mb-2">コンテンツタイプ:</h5>
-                        <ul class="text-sm space-y-1">
-                            <li>• 補聴器の種類・特徴解説</li>
-                            <li>• ビフォー・アフター体験談</li>
-                            <li>• 最新技術・機能紹介</li>
-                            <li>• 専門店の選び方</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
-                        <h4 class="font-bold text-lg mb-3 text-green-800">決定段階</h4>
-                        <p class="text-sm mb-3"><strong>目標:</strong> 来店・相談の後押し</p>
-                        <p class="text-sm mb-3"><strong>心理:</strong> 「この店で相談してみたい」</p>
-                        
-                        <h5 class="font-semibold mb-2">コンテンツタイプ:</h5>
-                        <ul class="text-sm space-y-1">
-                            <li>• 店舗・スタッフ紹介</li>
-                            <li>• 無料相談・試聴案内</li>
-                            <li>• お客様の声・満足体験</li>
-                            <li>• アクセス・予約方法</li>
-                        </ul>
-                    </div>
+                <p><strong>設定根拠：</strong></p>
+                <ul>
+                    <li>問い合わせ→来店率：60-75%（シナリオ別）</li>
+                    <li>直接来店効果：月0.5-1.5件（Instagram認知による）</li>
+                    <li>家族経由効果：+20%ボーナス</li>
+                </ul>
+                <div class="disclaimer-inline">
+                    ※来店率は業界平均値を参考にした設定です。
                 </div>
             </div>
 
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">3.2 具体的投稿テンプレート</h3>
+            <!-- 計算パラメータ根拠（開閉式） -->
+            <div style="margin-top: 32px;">
+                <button id="toggleCalculationBtn" style="background: #1a365d; color: white; padding: 12px 24px; border: none; cursor: pointer; font-weight: 600;">
+                    計算パラメータ根拠詳細を表示 ▼
+                </button>
                 
-                <div class="space-y-8">
-                    
-                    <!-- テンプレート1: 日常の困りごと共感型 -->
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold mr-3">認知段階</span>
-                            <h4 class="font-bold text-lg">日常の困りごと共感型</h4>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <h5 class="font-semibold mb-2 text-blue-600">📱 投稿例</h5>
-                                <div class="bg-white p-4 rounded border-l-4 border-blue-400">
-                                    <p class="mb-2"><strong>フック:</strong> 「テレビの音量、家族に『大きすぎる！』と言われたことはありませんか？」</p>
-                                    
-                                    <p class="mb-2"><strong>共感:</strong></p>
-                                    <p class="text-sm mb-2">✅ 家族が見ているテレビの音が小さく感じる</p>
-                                    <p class="text-sm mb-2">✅ 会話で聞き返すことが増えた</p>
-                                    <p class="text-sm mb-2">✅ 電話の声が聞き取りにくい</p>
-                                    
-                                    <p class="mb-2"><strong>解決提案:</strong> 「もしかすると、それは『聞こえ』の変化かもしれません。40代から始まる聴力の変化について、次の投稿で詳しくお伝えします」</p>
-                                    
-                                    <p><strong>CTA:</strong> 「同じような経験はありますか？コメントで教えてください👂」</p>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h5 class="font-semibold mb-2 text-green-600">💡 設計ポイント</h5>
-                                <ul class="text-sm space-y-2">
-                                    <li><strong>ターゲット:</strong> 難聴を自覚し始めた50-70代</li>
-                                    <li><strong>感情:</strong> 「あるある！」の共感からスタート</li>
-                                    <li><strong>トーン:</strong> 優しく、責めない、寄り添う</li>
-                                    <li><strong>ビジュアル:</strong> 家族団らんの写真、イラスト</li>
-                                    <li><strong>ハッシュタグ:</strong> #聞こえの悩み #家族 #コミュニケーション</li>
-                                    <li><strong>投稿時間:</strong> 夕方17-19時（家族の時間）</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div id="calculationTable" style="display: none; margin-top: 20px; background: #f8f9fa; padding: 24px; border: 1px solid #e5e7eb;">
+                    <h4 style="margin-bottom: 16px; color: #1a365d;">計算パラメータの設定根拠</h4>
+                    <div class="disclaimer">
+                        以下のパラメータ設定は外部調査データを参考にしております。
                     </div>
-                    
-                    <!-- テンプレート2: 体験談ストーリー型 -->
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold mr-3">検討段階</span>
-                            <h4 class="font-bold text-lg">体験談ストーリー型</h4>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <h5 class="font-semibold mb-2 text-blue-600">📱 投稿例</h5>
-                                <div class="bg-white p-4 rounded border-l-4 border-blue-400">
-                                    <p class="mb-2"><strong>フック:</strong> 「『孫の声がよく聞こえるようになって、会話が楽しい』72歳のAさんの体験談をお聞きください」</p>
-                                    
-                                    <p class="mb-2"><strong>ストーリー:</strong></p>
-                                    <p class="text-sm mb-2">🏠 Before: 孫との会話で何度も聞き返し、気まずい思いをしていた</p>
-                                    <p class="text-sm mb-2">🏥 きっかけ: 娘さんの勧めで補聴器専門店に相談</p>
-                                    <p class="text-sm mb-2">👂 After: 補聴器装用後、孫の小さな声も聞き取れ、会話が弾むように</p>
-                                    
-                                    <p class="mb-2"><strong>感想:</strong> 「もっと早く相談すれば良かった。今では孫から『おじいちゃん、お話し上手になったね』と言われます」</p>
-                                    
-                                    <p><strong>CTA:</strong> 「無料聴力測定・相談は町田店で受け付けています📞」</p>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h5 class="font-semibold mb-2 text-green-600">💡 設計ポイント</h5>
-                                <ul class="text-sm space-y-2">
-                                    <li><strong>ストーリー構造:</strong> Before → きっかけ → After</li>
-                                    <li><strong>感情訴求:</strong> 家族との絆、コミュニケーション改善</li>
-                                    <li><strong>信頼性:</strong> 具体的年齢・状況の記載</li>
-                                    <li><strong>ビジュアル:</strong> 祖父母と孫の温かい写真</li>
-                                    <li><strong>ハッシュタグ:</strong> #補聴器体験談 #家族の絆 #町田店</li>
-                                    <li><strong>フォローアップ:</strong> コメント質問への丁寧な回答</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- テンプレート3: 来店促進・信頼構築型 -->
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold mr-3">決定段階</span>
-                            <h4 class="font-bold text-lg">来店促進・信頼構築型</h4>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <h5 class="font-semibold mb-2 text-blue-600">📱 投稿例</h5>
-                                <div class="bg-white p-4 rounded border-l-4 border-blue-400">
-                                    <p class="mb-2"><strong>フック:</strong> 「補聴器選び、一人で悩んでいませんか？認定補聴器技能者が、あなたに最適な補聴器探しをサポートします」</p>
-                                    
-                                    <p class="mb-2"><strong>専門性アピール:</strong></p>
-                                    <p class="text-sm mb-2">✅ 認定補聴器技能者による専門相談</p>
-                                    <p class="text-sm mb-2">✅ 6大メーカー取扱いで豊富な選択肢</p>
-                                    <p class="text-sm mb-2">✅ 2週間無料試聴で納得してから購入</p>
-                                    <p class="text-sm mb-2">✅ 購入後も定期メンテナンス・調整無料</p>
-                                    
-                                    <p class="mb-2"><strong>安心感:</strong> 「『初めてで不安』というお客様も多くいらっしゃいます。丁寧にご説明しますので、お気軽にお越しください」</p>
-                                    
-                                    <p><strong>CTA:</strong> 「町田駅徒歩4分📍 土曜日も営業中 📞042-739-9850」</p>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h5 class="font-semibold mb-2 text-green-600">💡 設計ポイント</h5>
-                                <ul class="text-sm space-y-2">
-                                    <li><strong>専門性:</strong> 資格・経験・設備の具体的紹介</li>
-                                    <li><strong>安心感:</strong> 無料・試聴・保証の強調</li>
-                                    <li><strong>利便性:</strong> 立地・営業時間の訴求</li>
-                                    <li><strong>ビジュアル:</strong> 店舗外観・スタッフ紹介写真</li>
-                                    <li><strong>ハッシュタグ:</strong> #町田補聴器店 #認定補聴器技能者 #無料相談</li>
-                                    <li><strong>緊急性:</strong> 期間限定サービスなどの付加</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-2xl font-bold mb-4">3.3 感情的つながりの構築法</h3>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-purple-600">感情訴求のキーワード</h4>
-                        
-                        <div class="space-y-4">
-                            <div class="bg-pink-50 p-4 rounded-lg">
-                                <h5 class="font-bold mb-2">🏠 家族との絆</h5>
-                                <ul class="text-sm space-y-1">
-                                    <li>• 「家族の声がよく聞こえるようになった」</li>
-                                    <li>• 「孫との会話が楽しい」</li>
-                                    <li>• 「夫婦の会話が増えた」</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h5 class="font-bold mb-2">🎵 日常の喜び</h5>
-                                <ul class="text-sm space-y-1">
-                                    <li>• 「鳥の鳴き声に気づけた」</li>
-                                    <li>• 「音楽が楽しめるようになった」</li>
-                                    <li>• 「テレビの音量で家族と喧嘩しなくなった」</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-green-50 p-4 rounded-lg">
-                                <h5 class="font-bold mb-2">🚶‍♂️ 社会参加</h5>
-                                <ul class="text-sm space-y-1">
-                                    <li>• 「友人との会話に参加できる」</li>
-                                    <li>• 「電話に出るのが怖くなくなった」</li>
-                                    <li>• 「外出が楽しくなった」</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-purple-600">ストーリーテリング手法</h4>
-                        
-                        <div class="space-y-4">
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                                <h5 class="font-bold mb-2">1. 問題提起型</h5>
-                                <p class="text-sm">「○○で困っていませんか？」から始まり、共感を得てから解決策を提示</p>
-                            </div>
-                            
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                                <h5 class="font-bold mb-2">2. 変化ドラマ型</h5>
-                                <p class="text-sm">Before/After の劇的変化を時系列で描き、感動を呼ぶ</p>
-                            </div>
-                            
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                                <h5 class="font-bold mb-2">3. 専門知識提供型</h5>
-                                <p class="text-sm">「知らないと損する」情報を親しみやすく解説し、信頼を構築</p>
-                            </div>
-                            
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                                <h5 class="font-bold mb-2">4. 季節・イベント連動型</h5>
-                                <p class="text-sm">「敬老の日に」「クリスマスに家族と」など時期に合わせた提案</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 第4章: 運用戦略・KPI管理 -->
-        <div class="bg-white rounded-xl card-shadow p-8 section-spacing">
-            <h2 class="text-3xl font-bold mb-8 flex items-center">
-                <i class="fas fa-chart-line mr-4 text-indigo-600"></i>第4章: 運用戦略・KPI管理
-            </h2>
-
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">4.1 6ヶ月運用ロードマップ</h3>
-                
-                <div class="grid md:grid-cols-3 gap-6 mb-6">
-                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-400">
-                        <h4 class="font-bold text-lg mb-3 text-red-800">フェーズ1: 基盤構築期</h4>
-                        <p class="text-sm mb-3"><strong>期間:</strong> 1-2ヶ月目</p>
-                        
-                        <h5 class="font-semibold mb-2">主要目標：</h5>
-                        <ul class="text-sm space-y-1 mb-3">
-                            <li>• フォロワー500-1,000人獲得</li>
-                            <li>• ブランド認知度向上</li>
-                            <li>• コンテンツ形式の確立</li>
-                            <li>• エンゲージメント基盤作り</li>
-                        </ul>
-                        
-                        <h5 class="font-semibold mb-2">投稿戦略：</h5>
-                        <ul class="text-sm space-y-1">
-                            <li>• 投稿頻度: 週4-5回</li>
-                            <li>• 認知段階コンテンツ 70%</li>
-                            <li>• 店舗紹介コンテンツ 30%</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                        <h4 class="font-bold text-lg mb-3 text-blue-800">フェーズ2: 信頼構築期</h4>
-                        <p class="text-sm mb-3"><strong>期間:</strong> 3-4ヶ月目</p>
-                        
-                        <h5 class="font-semibold mb-2">主要目標：</h5>
-                        <ul class="text-sm space-y-1 mb-3">
-                            <li>• フォロワー1,500-2,500人獲得</li>
-                            <li>• 専門性・信頼性の確立</li>
-                            <li>• 見込み顧客の育成</li>
-                            <li>• 初回問い合わせ獲得</li>
-                        </ul>
-                        
-                        <h5 class="font-semibold mb-2">投稿戦略：</h5>
-                        <ul class="text-sm space-y-1">
-                            <li>• 投稿頻度: 週3-4回</li>
-                            <li>• 検討段階コンテンツ 60%</li>
-                            <li>• 体験談・事例 40%</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
-                        <h4 class="font-bold text-lg mb-3 text-green-800">フェーズ3: 成果収穫期</h4>
-                        <p class="text-sm mb-3"><strong>期間:</strong> 5-6ヶ月目</p>
-                        
-                        <h5 class="font-semibold mb-2">主要目標：</h5>
-                        <ul class="text-sm space-y-1 mb-3">
-                            <li>• フォロワー2,000-3,000人維持</li>
-                            <li>• 来店促進・成約重視</li>
-                            <li>• 月間来店2-3件達成</li>
-                            <li>• 顧客満足度向上</li>
-                        </ul>
-                        
-                        <h5 class="font-semibold mb-2">投稿戦略：</h5>
-                        <ul class="text-sm space-y-1">
-                            <li>• 投稿頻度: 週2-3回</li>
-                            <li>• 決定段階コンテンツ 50%</li>
-                            <li>• お客様の声 50%</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="chart-container mb-6">
-                    <canvas id="roadmapChart"></canvas>
-                </div>
-            </div>
-
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">4.2 KPI設定と測定方法</h3>
-                
-                <div class="overflow-x-auto mb-6">
-                    <table class="w-full bg-white border-collapse border border-gray-300">
+                    <table style="width: 100%; font-size: 0.9rem;">
                         <thead>
-                            <tr class="bg-gray-100">
-                                <th class="border border-gray-300 p-3 text-left">KPI項目</th>
-                                <th class="border border-gray-300 p-3 text-center">1-2ヶ月目</th>
-                                <th class="border border-gray-300 p-3 text-center">3-4ヶ月目</th>
-                                <th class="border border-gray-300 p-3 text-center">5-6ヶ月目</th>
-                                <th class="border border-gray-300 p-3 text-center">測定方法</th>
+                            <tr>
+                                <th style="text-align: left; padding: 12px; background: #e5e7eb;">パラメータ</th>
+                                <th style="text-align: left; padding: 12px; background: #e5e7eb;">設定値</th>
+                                <th style="text-align: left; padding: 12px; background: #e5e7eb;">根拠・調査機関</th>
+                                <th style="text-align: left; padding: 12px; background: #e5e7eb;">引用元URL</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="border border-gray-300 p-3 font-semibold">フォロワー数</td>
-                                <td class="border border-gray-300 p-3 text-center">500-1,000人</td>
-                                <td class="border border-gray-300 p-3 text-center">1,500-2,500人</td>
-                                <td class="border border-gray-300 p-3 text-center">2,000-3,000人</td>
-                                <td class="border border-gray-300 p-3 text-center">Instagram Insights</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="border border-gray-300 p-3 font-semibold">エンゲージメント率</td>
-                                <td class="border border-gray-300 p-3 text-center">1.5%以上</td>
-                                <td class="border border-gray-300 p-3 text-center">2.0%以上</td>
-                                <td class="border border-gray-300 p-3 text-center">2.5%以上</td>
-                                <td class="border border-gray-300 p-3 text-center">月次計算</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">最適投稿頻度</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">週3回（月12回）</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">Instagram最適投稿頻度調査</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://blog.hubspot.com/marketing/how-often-post-instagram" style="color: #1a365d;">https://blog.hubspot.com/marketing/how-often-post-instagram</a></td>
                             </tr>
                             <tr>
-                                <td class="border border-gray-300 p-3 font-semibold">月間リーチ数</td>
-                                <td class="border border-gray-300 p-3 text-center">3,000-5,000</td>
-                                <td class="border border-gray-300 p-3 text-center">8,000-12,000</td>
-                                <td class="border border-gray-300 p-3 text-center">10,000-15,000</td>
-                                <td class="border border-gray-300 p-3 text-center">Instagram Insights</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="border border-gray-300 p-3 font-semibold">プロフィールアクセス数</td>
-                                <td class="border border-gray-300 p-3 text-center">50-100/月</td>
-                                <td class="border border-gray-300 p-3 text-center">150-250/月</td>
-                                <td class="border border-gray-300 p-3 text-center">200-300/月</td>
-                                <td class="border border-gray-300 p-3 text-center">Instagram Insights</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">フォロワー転換率</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">0.8-1.5%</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">SNSマーケティング統計</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://sproutsocial.com/insights/social-media-statistics/" style="color: #1a365d;">https://sproutsocial.com/insights/social-media-statistics/</a></td>
                             </tr>
                             <tr>
-                                <td class="border border-gray-300 p-3 font-semibold">電話問い合わせ数</td>
-                                <td class="border border-gray-300 p-3 text-center">0-1件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">2-3件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">3-4件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">電話応対記録</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="border border-gray-300 p-3 font-semibold">来店数</td>
-                                <td class="border border-gray-300 p-3 text-center">0-1件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">1-2件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">2-3件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">来店記録・アンケート</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">月間リーチ倍率</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">10倍</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">Instagram Insights統計</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://business.instagram.com/blog/instagram-reach-vs-impressions" style="color: #1a365d;">https://business.instagram.com/blog/instagram-reach-vs-impressions</a></td>
                             </tr>
                             <tr>
-                                <td class="border border-gray-300 p-3 font-semibold">成約数</td>
-                                <td class="border border-gray-300 p-3 text-center">0件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">0-1件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">1-2件/月</td>
-                                <td class="border border-gray-300 p-3 text-center">販売記録</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">問い合わせ→来店率</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">60-75%</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;">補聴器業界統計</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #d1d5db;"><a href="https://hochouki.com/files/2023_JAPAN_Trak_2022_report.pdf" style="color: #1a365d;">https://hochouki.com/files/2023_JAPAN_Trak_2022_report.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px;">補聴器業界係数</td>
+                                <td style="padding: 12px;">0.7</td>
+                                <td style="padding: 12px;">高齢者SNS利用特性分析</td>
+                                <td style="padding: 12px;"><a href="https://www.moba-ken.jp/project/seniors/seniors20240718.html" style="color: #1a365d;">https://www.moba-ken.jp/project/seniors/seniors20240718.html</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
 
-                <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-6">
-                    <h4 class="font-bold mb-2">6ヶ月間 累計目標KPI</h4>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <ul class="space-y-2">
-                            <li><strong>総フォロワー数:</strong> 2,500-3,000人</li>
-                            <li><strong>総リーチ数:</strong> 40,000-50,000人</li>
-                            <li><strong>総問い合わせ数:</strong> 15-20件</li>
-                        </ul>
-                        <ul class="space-y-2">
-                            <li><strong>総来店数:</strong> 8-12件</li>
-                            <li><strong>総成約数:</strong> 4-6件</li>
-                            <li><strong>推定売上:</strong> 520-780万円</li>
-                        </ul>
+        <!-- 3パターンシミュレーション -->
+        <div class="section">
+            <h2 class="section-title">月次シミュレーション（3パターン比較）</h2>
+            
+
+            
+            <div class="grid grid-3">
+                <div class="card card-conservative">
+                    <h3>保守的シナリオ（確率40%）</h3>
+                    <p><strong>想定条件：</strong></p>
+                    <ul>
+                        <li>コンテンツ品質：標準レベル</li>
+                        <li>競合対策：最小限</li>
+                        <li>運用継続性：やや不安定</li>
+                        <li>エンゲージメント率：1.2%</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-realistic">
+                    <h3>現実的シナリオ（確率45%）</h3>
+                    <p><strong>想定条件：</strong></p>
+                    <ul>
+                        <li>コンテンツ品質：良好</li>
+                        <li>競合対策：適切</li>
+                        <li>運用継続性：安定</li>
+                        <li>エンゲージメント率：1.8%</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-optimistic">
+                    <h3>楽観的シナリオ（確率15%）</h3>
+                    <p><strong>想定条件：</strong></p>
+                    <ul>
+                        <li>コンテンツ品質：高品質</li>
+                        <li>競合対策：優位性確保</li>
+                        <li>運用継続性：非常に安定</li>
+                        <li>エンゲージメント率：2.5%</li>
+                    </ul>
+                    <div class="disclaimer-inline">
+                        ※最も良好な条件が揃った場合の試算値です。
                     </div>
                 </div>
             </div>
 
-            <div>
-                <h3 class="text-2xl font-bold mb-4">4.3 ROI最大化戦略</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>期間</th>
+                        <th>指標</th>
+                        <th>保守的</th>
+                        <th>現実的</th>
+                        <th>楽観的</th>
+                        <th>計算根拠</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4">1ヶ月目</td>
+                        <td>フォロワー増加</td>
+                        <td>+180人</td>
+                        <td>+280人</td>
+                        <td>+420人</td>
+                        <td>12投稿×ER×転換率×業界係数</td>
+                    </tr>
+                    <tr>
+                        <td>月間リーチ</td>
+                        <td>1,800</td>
+                        <td>2,800</td>
+                        <td>4,200</td>
+                        <td>フォロワー数×10倍</td>
+                    </tr>
+                    <tr>
+                        <td>問い合わせ数</td>
+                        <td>1件</td>
+                        <td>3件</td>
+                        <td>6件</td>
+                        <td>リーチ×転換率</td>
+                    </tr>
+                    <tr>
+                        <td>来店数</td>
+                        <td>1件</td>
+                        <td>2件</td>
+                        <td>4件</td>
+                        <td>問い合わせ×来店率+直接</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">3ヶ月目</td>
+                        <td>累積フォロワー</td>
+                        <td>650人</td>
+                        <td>1,200人</td>
+                        <td>1,800人</td>
+                        <td>成長率減衰考慮</td>
+                    </tr>
+                    <tr>
+                        <td>月間リーチ</td>
+                        <td>6,500</td>
+                        <td>12,000</td>
+                        <td>18,000</td>
+                        <td>フォロワー×10倍</td>
+                    </tr>
+                    <tr>
+                        <td>問い合わせ数</td>
+                        <td>3件</td>
+                        <td>7件</td>
+                        <td>12件</td>
+                        <td>リーチ×転換率（向上）</td>
+                    </tr>
+                    <tr>
+                        <td>来店数</td>
+                        <td>2件</td>
+                        <td>5件</td>
+                        <td>9件</td>
+                        <td>問い合わせ×来店率+直接</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">6ヶ月目</td>
+                        <td>累積フォロワー</td>
+                        <td>1,400人</td>
+                        <td>2,200人</td>
+                        <td>3,500人</td>
+                        <td>成長率減衰＋質向上</td>
+                    </tr>
+                    <tr>
+                        <td>月間リーチ</td>
+                        <td>14,000</td>
+                        <td>22,000</td>
+                        <td>35,000</td>
+                        <td>フォロワー×10倍</td>
+                    </tr>
+                    <tr>
+                        <td>問い合わせ数</td>
+                        <td>7件</td>
+                        <td>11件</td>
+                        <td>18件</td>
+                        <td>信頼度向上効果</td>
+                    </tr>
+                    <tr>
+                        <td>来店数</td>
+                        <td>5件</td>
+                        <td>8件</td>
+                        <td>14件</td>
+                        <td>来店率向上</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="disclaimer-inline">
+                ※上記数値はすべて統計データに基づく理論値であり、実際の成果を保証するものではありません。
+            </div>
+        </div>
+
+        <!-- 6ヶ月累積効果 -->
+        <div class="section">
+            <h2 class="section-title">6ヶ月累積効果・投資回収分析</h2>
+            
+            <div class="risk-notice-box">
+                <h4>投資回収分析の注意点</h4>
+                <p>以下のROI計算は理論値であり、実際の投資回収を保証するものではありません。成約に至るまでには多くの要因が関わり、Instagram以外の要素（店舗対応、商品力、価格競争力など）が大きく影響します。投資判断は慎重にご検討ください。</p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="cumulativeChart"></canvas>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>シナリオ</th>
+                        <th>総投資額</th>
+                        <th>累積問い合わせ</th>
+                        <th>累積来店</th>
+                        <th>想定成約数（48.5%）</th>
+                        <th>想定売上</th>
+                        <th>想定ROI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>保守的</strong></td>
+                        <td>72万円</td>
+                        <td>21件</td>
+                        <td>18件</td>
+                        <td>9件</td>
+                        <td>270万円</td>
+                        <td class="roi-positive">275%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>現実的</strong></td>
+                        <td>72万円</td>
+                        <td>42件</td>
+                        <td>35件</td>
+                        <td>17件</td>
+                        <td>510万円</td>
+                        <td class="roi-positive">608%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>楽観的</strong></td>
+                        <td>72万円</td>
+                        <td>75件</td>
+                        <td>62件</td>
+                        <td>30件</td>
+                        <td>900万円</td>
+                        <td class="roi-positive">1,150%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="success-box">
+                <h4>期待値計算（参考値）</h4>
+                <p><strong>加重平均ROI：</strong>(275% × 0.4) + (608% × 0.45) + (1,150% × 0.15) = <strong>556%</strong></p>
+                <div class="disclaimer-inline">
+                    ※この期待値は統計的な計算値であり、実際の投資回収を約束するものではありません。あくまで参考指標としてご活用ください。
+                </div>
+            </div>
+        </div>
+
+        <!-- サービス内容詳細 -->
+        <div class="section">
+            <h2 class="section-title">月額12万円サービス内容詳細</h2>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>コンテンツ制作</h3>
+                    <ul>
+                        <li>月12回の投稿（週3回の安定投稿）</li>
+                        <li>画像・動画編集および最適化</li>
+                        <li>キャプション作成（専門性重視）</li>
+                        <li>ハッシュタグ戦略・最適化</li>
+                        <li>ストーリーズ投稿（週2-3回）</li>
+                        <li>地域密着コンテンツ企画</li>
+                    </ul>
+                    <div class="disclaimer-inline">
+                        ※コンテンツ品質や投稿頻度は市場反応に応じて調整する場合があります。
+                    </div>
+                </div>
                 
-                <div class="grid md:grid-cols-2 gap-8 mb-6">
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-green-600">投資計算（6ヶ月間）</h4>
-                        
-                        <div class="bg-green-50 p-6 rounded-lg">
-                            <h5 class="font-semibold mb-3">初期投資</h5>
-                            <ul class="space-y-2 text-sm">
-                                <li class="flex justify-between">
-                                    <span>写真撮影・素材作成</span>
-                                    <span class="font-bold">10万円</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span>コンテンツ制作ツール</span>
-                                    <span class="font-bold">3万円</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span>運用体制構築</span>
-                                    <span class="font-bold">5万円</span>
-                                </li>
-                                <li class="border-t pt-2 flex justify-between font-bold">
-                                    <span>初期投資計</span>
-                                    <span>18万円</span>
-                                </li>
-                            </ul>
-                            
-                            <h5 class="font-semibold mb-3 mt-4">運用費用（月額）</h5>
-                            <ul class="space-y-2 text-sm">
-                                <li class="flex justify-between">
-                                    <span>コンテンツ制作・投稿</span>
-                                    <span class="font-bold">8万円</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span>分析・改善</span>
-                                    <span class="font-bold">2万円</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span>その他</span>
-                                    <span class="font-bold">2万円</span>
-                                </li>
-                                <li class="border-t pt-2 flex justify-between font-bold">
-                                    <span>月額運用費</span>
-                                    <span>12万円</span>
-                                </li>
-                            </ul>
-                            
-                            <div class="mt-4 pt-4 border-t-2 border-green-400">
-                                <p class="flex justify-between font-bold text-lg">
-                                    <span>6ヶ月総投資額</span>
-                                    <span class="text-green-700">90万円</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-blue-600">収益計算（6ヶ月間）</h4>
-                        
-                        <div class="bg-blue-50 p-6 rounded-lg">
-                            <h5 class="font-semibold mb-3">保守的シナリオ</h5>
-                            <ul class="space-y-2 text-sm">
-                                <li class="flex justify-between">
-                                    <span>成約件数</span>
-                                    <span class="font-bold">4件</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span>平均単価</span>
-                                    <span class="font-bold">13万円</span>
-                                </li>
-                                <li class="border-t pt-2 flex justify-between font-bold">
-                                    <span>売上合計</span>
-                                    <span>520万円</span>
-                                </li>
-                            </ul>
-                            
-                            <h5 class="font-semibold mb-3 mt-4">現実的シナリオ</h5>
-                            <ul class="space-y-2 text-sm">
-                                <li class="flex justify-between">
-                                    <span>成約件数</span>
-                                    <span class="font-bold">5件</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span>平均単価</span>
-                                    <span class="font-bold">13万円</span>
-                                </li>
-                                <li class="border-t pt-2 flex justify-between font-bold">
-                                    <span>売上合計</span>
-                                    <span>650万円</span>
-                                </li>
-                            </ul>
-                            
-                            <h5 class="font-semibold mb-3 mt-4">楽観的シナリオ</h5>
-                            <ul class="space-y-2 text-sm">
-                                <li class="flex justify-between">
-                                    <span>成約件数</span>
-                                    <span class="font-bold">6件</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span>平均単価</span>
-                                    <span class="font-bold">13万円</span>
-                                </li>
-                                <li class="border-t pt-2 flex justify-between font-bold">
-                                    <span>売上合計</span>
-                                    <span>780万円</span>
-                                </li>
-                            </ul>
-                            
-                            <div class="mt-4 pt-4 border-t-2 border-blue-400">
-                                <p class="flex justify-between font-bold text-lg">
-                                    <span>ROI範囲</span>
-                                    <span class="text-blue-700">478-767%</span>
-                                </p>
-                            </div>
-                        </div>
+                <div class="card">
+                    <h3>運用・エンゲージメント</h3>
+                    <ul>
+                        <li>投稿スケジュール最適化</li>
+                        <li>コメント対応代行</li>
+                        <li>DM初回対応・誘導</li>
+                        <li>フォロワー管理・分析</li>
+                        <li>競合アカウント監視</li>
+                        <li>トレンド対応・活用</li>
+                    </ul>
+                    <div class="disclaimer-inline">
+                        ※複雑な専門的質問は店舗へ引き継ぎとなる場合があります。
                     </div>
                 </div>
-
-                <div class="chart-container mb-6">
-                    <canvas id="roiChart"></canvas>
-                </div>
-
-                <div class="bg-purple-100 border-l-4 border-purple-500 p-6">
-                    <h4 class="font-bold mb-4">ROI最大化のための重要施策</h4>
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h5 class="font-semibold mb-2 text-purple-700">効率化施策</h5>
-                            <ul class="space-y-1 text-sm">
-                                <li>• コンテンツのテンプレート化・再利用</li>
-                                <li>• 投稿スケジュールの自動化</li>
-                                <li>• 反響の良いコンテンツの横展開</li>
-                                <li>• 測定・分析の仕組み化</li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h5 class="font-semibold mb-2 text-purple-700">成果向上施策</h5>
-                            <ul class="space-y-1 text-sm">
-                                <li>• 顧客満足度向上による口コミ促進</li>
-                                <li>• 紹介制度の導入・活用</li>
-                                <li>• 長期顧客価値(LTV)の最大化</li>
-                                <li>• 全13店舗への展開準備</li>
-                            </ul>
-                        </div>
+                
+                <div class="card">
+                    <h3>分析・戦略</h3>
+                    <ul>
+                        <li>月次詳細レポート作成</li>
+                        <li>効果測定・KPI管理</li>
+                        <li>戦略ミーティング（月1回）</li>
+                        <li>コンテンツ改善提案</li>
+                        <li>来店・成約追跡サポート</li>
+                        <li>他SNS連携相談</li>
+                    </ul>
+                    <div class="disclaimer-inline">
+                        ※効果測定は様々な要因により正確な数値化が困難な場合があります。
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- まとめ・実行チェックリスト -->
-        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-8 section-spacing">
-            <h2 class="text-3xl font-bold mb-6 text-center">実行チェックリスト</h2>
+        <!-- ご依頼事項 -->
+        <div class="section">
+            <h2 class="section-title">成功に向けたご協力のお願い</h2>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">📋 運用開始前の準備</h3>
-                    <div class="space-y-2 text-sm">
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>Instagramビジネスアカウント開設・設定完了</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>店舗・スタッフの魅力的な写真撮影完了</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>投稿テンプレート・コンテンツ素材準備完了</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>運用体制・責任者の決定完了</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>KPI測定の仕組み構築完了</span>
-                        </label>
-                    </div>
+            <div class="highlight-box">
+                <h4>プロジェクト成功のために</h4>
+                <p>本Instagram運用代行の効果を最大化するため、以下の点でのご協力をお願いしております。これらの協力度合いによって成果が大きく左右されるため、可能な範囲でご協力いただければと思います。</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>ビジネス情報のご提供</h3>
+                    <ul>
+                        <li><strong>ビジネスモデル：</strong>収益構造や顧客獲得プロセス</li>
+                        <li><strong>サービス内容：</strong>技術的な特長や差別化要因</li>
+                        <li><strong>顧客層：</strong>既存顧客の属性や来店動機</li>
+                        <li><strong>競合状況：</strong>地域の競合他社情報</li>
+                        <li><strong>過去実績：</strong>成功事例や顧客の声</li>
+                    </ul>
+                    <p style="margin-top: 16px; font-size: 0.9rem; color: #6b7280;">詳細な情報をいただくことで、より効果的な投稿企画を立案できます。</p>
                 </div>
                 
-                <div>
-                    <h3 class="text-xl font-bold mb-4">🚀 運用開始後の重要ポイント</h3>
-                    <div class="space-y-2 text-sm">
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>毎週のコンテンツ計画・投稿実施</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>コメント・DMへの迅速で丁寧な対応</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>月次でのKPI測定・分析実施</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>効果的コンテンツの特定・活用</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="mr-3">
-                            <span>顧客満足度向上・口コミ獲得施策実施</span>
-                        </label>
-                    </div>
+                <div class="card">
+                    <h3>コンテンツ企画へのご協力</h3>
+                    <ul>
+                        <li><strong>FAQ対応：</strong>よくある質問への回答</li>
+                        <li><strong>専門知識：</strong>技術的な内容の監修</li>
+                        <li><strong>法的確認：</strong>薬機法等への準拠確認</li>
+                        <li><strong>投稿内容監修：</strong>事実関係の正確性チェック</li>
+                        <li><strong>顧客事例：</strong>成功体験談の提供</li>
+                    </ul>
+                    <p style="margin-top: 16px; font-size: 0.9rem; color: #6b7280;">専門性を活かした信頼性の高いコンテンツ作成にご協力ください。</p>
+                </div>
+                
+                <div class="card">
+                    <h3>素材提供へのご協力</h3>
+                    <ul>
+                        <li><strong>店舗写真：</strong>外観・内装・設備の撮影協力</li>
+                        <li><strong>スタッフ写真：</strong>人柄が伝わる自然な写真</li>
+                        <li><strong>作業風景：</strong>技術的な作業シーンの撮影</li>
+                        <li><strong>商品写真：</strong>補聴器や関連機器の撮影</li>
+                        <li><strong>動画素材：</strong>説明動画や施設案内動画</li>
+                    </ul>
+                    <p style="margin-top: 16px; font-size: 0.9rem; color: #6b7280;">リアルで親しみやすいコンテンツ制作にご協力をお願いいたします。</p>
                 </div>
             </div>
-            
-            <div class="text-center mt-8">
-                <p class="text-xl font-bold mb-2">📊 6ヶ月後の成功目標</p>
-                <p class="text-lg opacity-90">来店10件 | 成約5件 | ROI 500%以上達成</p>
+
+            <div class="warning-box">
+                <h4>重要なポイント</h4>
+                <p>上記のご協力いただける範囲によって、投稿の質、信頼性、そして最終的な成果が大きく左右されます。お忙しい中恐縮ですが、可能な範囲でのご協力をいただければ、より良い成果を目指していけるものと考えております。ただし、十分にご協力いただいた場合でも、市場環境等により期待した成果が得られない場合があることをご理解ください。</p>
             </div>
         </div>
 
+        <!-- 成功要因と注意点 -->
+        <div class="section">
+            <h2 class="section-title">成功要因と注意点</h2>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>成功のための重要要因</h3>
+                    <ul>
+                        <li><strong>継続的な投稿：</strong>週3回の安定したコンテンツ更新</li>
+                        <li><strong>地域密着戦略：</strong>町田地域に特化したアプローチ</li>
+                        <li><strong>専門性の訴求：</strong>認定技能者の権威性活用</li>
+                        <li><strong>家族向けコンテンツ：</strong>決定権者への適切な配慮</li>
+                        <li><strong>口コミ連携：</strong>既存顧客満足度との相乗効果</li>
+                        <li><strong>長期視点：</strong>6-12ヶ月の継続運用</li>
+                    </ul>
+                    <div class="disclaimer-inline">
+                        ※これらの要因が揃っても、市場環境や競合状況により成果が期待値を下回る場合があります。
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>注意すべきリスク要因</h3>
+                    <ul>
+                        <li><strong>競合の類似施策：</strong>差別化の継続的努力が必要</li>
+                        <li><strong>コンテンツ品質維持：</strong>専門性と親しみやすさの両立</li>
+                        <li><strong>法的制約：</strong>薬機法遵守の継続的確認</li>
+                        <li><strong>効果測定の複雑性：</strong>長期的視点での評価</li>
+                        <li><strong>運用体制：</strong>内部リソースとの適切な連携</li>
+                        <li><strong>市場変化：</strong>高齢者のSNS利用動向変化</li>
+                    </ul>
+                    <div class="disclaimer-inline">
+                        ※これらのリスクにより、予測した効果が得られない場合や、投資回収に時間がかかる場合があります。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 最終推奨 -->
+    <div class="final-recommendation">
+        <div class="container">
+            <h2>投資ご検討にあたって</h2>
+            <p>統計的分析に基づき、月額12万円のInstagram運用代行について<br>
+            <strong>参考指標として期待ROI</strong>を算出いたしました</p>
+            
+            <div class="disclaimer" style="background: rgba(107, 114, 128, 0.1); border: 1px solid rgba(107, 114, 128, 0.3); color: rgba(255, 255, 255, 0.9);">
+                ※以下の数値はすべて統計データに基づく試算であり、実際の成果や投資回収を保証するものではありません。投資判断は貴社の状況を十分ご検討の上、慎重にお願いいたします。
+            </div>
+            
+            <div class="recommendation-grid">
+                <div class="recommendation-card">
+                    <h3>想定効果範囲</h3>
+                    <p>6ヶ月で18-62件の来店創出<br>
+                    9-30件の成約獲得を目標</p>
+                    <div style="font-size: 0.8rem; margin-top: 8px; opacity: 0.8;">
+                        ※実際の数値は大きく変動する可能性があります
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <h3>効果発現予測</h3>
+                    <p>3ヶ月目から本格的効果<br>
+                    6ヶ月での投資回収を目標</p>
+                    <div style="font-size: 0.8rem; margin-top: 8px; opacity: 0.8;">
+                        ※効果発現時期は個別状況により異なります
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <h3>市場機会</h3>
+                    <p>補聴器業界でのInstagram活用<br>
+                    競合他社に対する先行優位性</p>
+                    <div style="font-size: 0.8rem; margin-top: 8px; opacity: 0.8;">
+                        ※市場状況は変化する可能性があります
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 32px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);">
+                <h3 style="margin-bottom: 20px;">補聴器業界でのInstagram運用の現状</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                    現在、補聴器業界でのInstagram活用は限定的で、多くの競合他社がまだ本格的な運用を行っていない状況と考えられます。
+                    この統計データに基づく分析結果は、<strong>参考値として狙える市場規模と到達可能性のある数値</strong>を示しています。
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 24px;">
+                    Instagram運用における<strong>先行者としての取り組み</strong>により、貴社の補聴器店としての
+                    デジタル領域での地位確立を、ぜひ一緒に目指させていただければと思います。
+                </p>
+                
+                <div style="text-align: center; margin-top: 32px;">
+                    <a href="https://h2t-makino.github.io/instagram-service.io/" 
+                       target="_blank"
+                       style="display: inline-block; background: #dc2626; color: white; padding: 16px 32px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                        サービス詳細を確認する
+                    </a>
+                    <p style="font-size: 0.9rem; margin-top: 12px; opacity: 0.8;">
+                        ※サービス説明サイトに遷移します
+                    </p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h3>お問い合わせ・ご相談</h3>
+                <p>詳細なご相談・カスタマイズ提案は個別にお打ち合わせいたします</p>
+                <div class="disclaimer" style="background: rgba(107, 114, 128, 0.1); border: 1px solid rgba(107, 114, 128, 0.3); color: rgba(255, 255, 255, 0.9); margin-top: 20px;">
+                    本提案書の内容についてご不明な点や、より詳細な検討材料が必要でしたら、お気軽にお問い合わせください。貴社の実情に合わせた個別のご提案も承ります。
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // 市場規模チャート
-        const ctx1 = document.getElementById('marketSizeChart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'bar',
-            data: {
-                labels: ['東京都', '関東圏'],
-                datasets: [{
-                    label: '推定難聴者数（万人）',
-                    data: [133, 411],
-                    backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }, {
-                    label: '補聴器潜在需要者数（万人）',
-                    data: [20, 62],
-                    backgroundColor: 'rgba(255, 99, 132, 0.8)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // 購入決定要因チャート
-        const ctx2 = document.getElementById('purchaseFactorsChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'horizontalBar',
-            data: {
-                labels: ['聞こえ悪化', '耳鼻科医師の薦め', 'かかりつけ医の薦め', '価格適正感', '子供の薦め', '配偶者の薦め'],
-                datasets: [{
-                    label: '購入動機の割合（%）',
-                    data: [65, 39, 25, 23, 20, 16],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 206, 86, 0.8)',
-                        'rgba(75, 192, 192, 0.8)',
-                        'rgba(153, 102, 255, 0.8)',
-                        'rgba(255, 159, 64, 0.8)'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        max: 70
-                    }
-                }
-            }
-        });
-
-        // SNS利用率チャート
-        const ctx3 = document.getElementById('snsUsageChart').getContext('2d');
-        new Chart(ctx3, {
-            type: 'line',
-            data: {
-                labels: ['50代', '60代', '70代'],
-                datasets: [{
-                    label: 'Instagram利用率（%）',
-                    data: [49, 37, 20],
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 60
-                    }
-                }
-            }
-        });
-
-        // ロードマップチャート
-        const ctx4 = document.getElementById('roadmapChart').getContext('2d');
-        new Chart(ctx4, {
-            type: 'line',
-            data: {
-                labels: ['1ヶ月目', '2ヶ月目', '3ヶ月目', '4ヶ月目', '5ヶ月目', '6ヶ月目'],
-                datasets: [{
-                    label: 'フォロワー数',
-                    data: [750, 1250, 1750, 2250, 2500, 2750],
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    backgroundColor: 'rgba(54, 162, 235, 0.1)',
-                    yAxisID: 'y'
-                }, {
-                    label: '累積来店数',
-                    data: [0, 1, 2, 4, 6, 10],
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.1)',
-                    yAxisID: 'y1'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        beginAtZero: true
+        document.addEventListener('DOMContentLoaded', function() {
+            // チャート描画
+            const ctx = document.getElementById('cumulativeChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1ヶ月', '2ヶ月', '3ヶ月', '4ヶ月', '5ヶ月', '6ヶ月'],
+                    datasets: [{
+                        label: '保守的シナリオ（来店数）',
+                        data: [1, 1, 2, 3, 4, 5],
+                        borderColor: '#6b7280',
+                        backgroundColor: 'rgba(107, 114, 128, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    }, {
+                        label: '現実的シナリオ（来店数）',
+                        data: [2, 3, 5, 6, 7, 8],
+                        borderColor: '#1a365d',
+                        backgroundColor: 'rgba(26, 54, 93, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    }, {
+                        label: '楽観的シナリオ（来店数）',
+                        data: [4, 6, 9, 11, 12, 14],
+                        borderColor: '#dc2626',
+                        backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '6ヶ月間累積効果推移グラフ（想定値）',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 20,
+                                padding: 20
+                            }
+                        }
                     },
-                    y1: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        beginAtZero: true,
-                        grid: {
-                            drawOnChartArea: false
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '月間来店数（件）※想定値'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '期間'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
 
-        // ROIチャート
-        const ctx5 = document.getElementById('roiChart').getContext('2d');
-        new Chart(ctx5, {
-            type: 'bar',
-            data: {
-                labels: ['保守的', '現実的', '楽観的'],
-                datasets: [{
-                    label: '投資額（万円）',
-                    data: [90, 90, 90],
-                    backgroundColor: 'rgba(255, 99, 132, 0.8)'
-                }, {
-                    label: '収益額（万円）',
-                    data: [520, 650, 780],
-                    backgroundColor: 'rgba(54, 162, 235, 0.8)'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+            // データソース開閉機能
+            const toggleSourcesBtn = document.getElementById('toggleSourcesBtn');
+            const sourcesTable = document.getElementById('sourcesTable');
+            
+            toggleSourcesBtn.addEventListener('click', function() {
+                if (sourcesTable.style.display === 'none') {
+                    sourcesTable.style.display = 'block';
+                    toggleSourcesBtn.textContent = 'データソース詳細を非表示 ▲';
+                } else {
+                    sourcesTable.style.display = 'none';
+                    toggleSourcesBtn.textContent = 'データソース詳細を表示 ▼';
                 }
-            }
+            });
+
+            // 計算パラメータ開閉機能
+            const toggleCalculationBtn = document.getElementById('toggleCalculationBtn');
+            const calculationTable = document.getElementById('calculationTable');
+            
+            toggleCalculationBtn.addEventListener('click', function() {
+                if (calculationTable.style.display === 'none') {
+                    calculationTable.style.display = 'block';
+                    toggleCalculationBtn.textContent = '計算パラメータ根拠詳細を非表示 ▲';
+                } else {
+                    calculationTable.style.display = 'none';
+                    toggleCalculationBtn.textContent = '計算パラメータ根拠詳細を表示 ▼';
+                }
+            });
         });
     </script>
-
 </body>
 </html>
