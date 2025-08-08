@@ -1168,7 +1168,7 @@
                                 <td class="price-low">1.48万円〜4.98万円</td>
                                 <td class="price-high">30万円〜45万円</td>
                                 <td class="price-high">要問合せ（高額）</td>
-                                <td class="price-medium">12万円〜18万円</td>
+                                <td class="price-medium">15万円〜18万円</td>
                             </tr>
                             <tr>
                                 <td class="compare-feature">投稿頻度</td>
@@ -1358,7 +1358,7 @@
                         <div class="campaign-notice">キャンペーン特価</div>
                         <div class="price-section">
                             <div class="price-original">¥180,000</div>
-                            <div class="price-current">¥120,000</div>
+                            <div class="price-current">¥150,000</div>
                             <div class="price-period">/月</div>
                         </div>
                         <p class="plan-description">信頼構築型運用の基本パッケージ</p>
@@ -2148,53 +2148,54 @@
     </section>
 
     <!-- フローティング目次 -->
-    <div class="floating-toc-menu" id="floatingTocMenu">
-        <div class="floating-toc-header">目次</div>
-        <ul class="floating-toc-list">
-            <li class="floating-toc-item">
-                <a href="#section-1" class="floating-toc-link" onclick="closeFloatingToc()">1. Instagram運用の問題点</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-2" class="floating-toc-link" onclick="closeFloatingToc()">2. 「映えない業界」の課題と機会</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-3" class="floating-toc-link" onclick="closeFloatingToc()">3. Webサイテーションの一翼</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-4" class="floating-toc-link" onclick="closeFloatingToc()">4. 信頼構築が最重要な理由</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-5" class="floating-toc-link" onclick="closeFloatingToc()">5. アカウント設計</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-6" class="floating-toc-link" onclick="closeFloatingToc()">6. 投稿戦略</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-7" class="floating-toc-link" onclick="closeFloatingToc()">7. 業種別戦略</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-8" class="floating-toc-link" onclick="closeFloatingToc()">8. 制作手法</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-9" class="floating-toc-link" onclick="closeFloatingToc()">9. 運営体制</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-10" class="floating-toc-link" onclick="closeFloatingToc()">10. 総合支援への展望</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-11" class="floating-toc-link" onclick="closeFloatingToc()">11. 競合比較分析</a>
-            </li>
-            <li class="floating-toc-item">
-                <a href="#section-12" class="floating-toc-link" onclick="closeFloatingToc()">12. サービス内容と料金設定</a>
-            </li>
-        </ul>
-    </div>
-    <!-- フローティング目次ボタン -->
     <div class="floating-toc">
-        <button class="floating-toc-toggle" onclick="toggleFloatingToc()" aria-label="目次を開く">
+        <button class="floating-toc-toggle" id="floatingTocToggle" aria-label="目次を開く" aria-expanded="false">
             📋
         </button>
+        
+        <div class="floating-toc-menu" id="floatingTocMenu">
+            <div class="floating-toc-header">目次</div>
+            <ul class="floating-toc-list">
+                <li class="floating-toc-item">
+                    <a href="#section-1" class="floating-toc-link">1. 昨今のInstagram運用の問題点</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-2" class="floating-toc-link">2. 「映えない業界」の課題と機会</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-3" class="floating-toc-link">3. InstagramはWebサイテーションの重要な一翼</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-4" class="floating-toc-link">4. なぜ今「信頼構築」が最重要なのか</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-5" class="floating-toc-link">5. 専門性を最大化するアカウント設計</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-6" class="floating-toc-link">6. 信頼構築特化アプローチによる投稿戦略</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-7" class="floating-toc-link">7. 業種別信頼構築戦略の実践例</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-8" class="floating-toc-link">8. 撮影技術に依存しない効率的制作手法</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-9" class="floating-toc-link">9. 信頼と実績に基づく強固な運営体制</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-10" class="floating-toc-link">10. 総合マーケティング支援への展望</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-11" class="floating-toc-link">11. 競合比較分析と市場ポジション</a>
+                </li>
+                <li class="floating-toc-item">
+                    <a href="#section-12" class="floating-toc-link">12. サービス内容と料金設定</a>
+                </li>
+            </ul>
+        </div>
     </div>
+    
 
     <script src="./script.js"></script>
 </body>
